@@ -119,8 +119,8 @@ $regiones = [
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wiki Loves Earth Colombia 2026 - Mapa Interactivo</title>
-  <meta name="description" content="Visualizador cartográfico interactivo de las fotografías del concurso Wiki Loves Earth Colombia 2026 clasificado por regiones naturales y departamentos.">
+  <title>Wiki Loves Earth Colombia 2026</title>
+  <meta name="description" content="Visualizador cartográfico de las fotografías del concurso Wiki Loves Earth Colombia 2026 clasificado por regiones naturales y departamentos.">
   <meta name="author" content="Daniel Yepez Garces, Wikimedia Colombia">
   <meta name="keywords" content="Wiki Loves Earth, WLE Colombia 2026, Wikimedia Commons, Biodiversidad Colombia, Mapa Interactivo, Fotografía de Naturaleza">
   <meta name="theme-color" content="#181d24">
@@ -128,7 +128,7 @@ $regiones = [
 
   <!-- Open Graph / Facebook / WhatsApp / Telegram / LinkedIn -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Wiki Loves Earth Colombia 2026 - Mapa Interactivo de Biodiversidad">
+  <meta property="og:title" content="Wiki Loves Earth Colombia 2026">
   <meta property="og:description" content="Explora las fotografías georreferenciadas de la biodiversidad de Colombia clasificadas por regiones naturales y departamentos.">
   <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/c/ca/Biodiversidad_esfera.png">
   <meta property="og:image:alt" content="Biodiversidad Esfera - Wiki Loves Earth Colombia 2026">
@@ -137,7 +137,7 @@ $regiones = [
 
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Wiki Loves Earth Colombia 2026 - Mapa Interactivo">
+  <meta name="twitter:title" content="Wiki Loves Earth Colombia 2026">
   <meta name="twitter:description" content="Explora las fotografías de la biodiversidad de Colombia clasificadas por regiones naturales y departamentos.">
   <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/c/ca/Biodiversidad_esfera.png">
   <meta name="twitter:image:alt" content="Wiki Loves Earth Colombia 2026">
