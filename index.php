@@ -181,10 +181,6 @@ $regiones = [
           <span class="stat-num" id="stat-authors"><?= htmlspecialchars($totalAutores) ?></span>
           <span class="stat-label">Autores</span>
         </div>
-        <div class="stat-item">
-          <span class="stat-num" id="stat-regions"><?= htmlspecialchars($totalRegiones) ?></span>
-          <span class="stat-label">Regiones</span>
-        </div>
       </div>
 
       <!-- Scrollable Body -->

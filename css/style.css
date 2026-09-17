@@ -142,8 +142,8 @@ html, body {
 /* Quick Stats Bar (Sober & Flat) */
 .stats-summary {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
   padding: 12px 20px;
   background: var(--bg-sidebar-header);
   border-bottom: 1px solid var(--border-color);

@@ -616,7 +616,6 @@ function renderStatsSummary() {
   document.getElementById('stat-total-photos').innerText = state.stats.total_fotos.toLocaleString();
   document.getElementById('stat-gps-photos').innerText = state.stats.fotos_con_gps.toLocaleString();
   document.getElementById('stat-authors').innerText = state.stats.total_autores.toLocaleString();
-  document.getElementById('stat-regions').innerText = Object.keys(state.stats.conteo_regiones || {}).length;
 }
 
 /**
