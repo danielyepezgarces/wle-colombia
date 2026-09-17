@@ -982,10 +982,10 @@ dialog#lightbox-dialog::backdrop {
     display: none !important;
   }
 
-  /* Adjust map legend size on mobile */
+  /* Adjust map legend size on mobile (raised to give margin above map attribution credits) */
   .map-legend {
-    bottom: 12px;
-    right: 12px;
+    bottom: 28px;
+    right: 10px;
     max-width: 220px;
     padding: 8px 12px;
     font-size: 0.72rem;
