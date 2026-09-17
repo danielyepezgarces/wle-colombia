@@ -776,16 +776,34 @@ function setupEventListeners() {
     state.map.setView([4.570868, -74.297333], 6);
   });
 
-  // Mobile sidebar toggle
+  // Mobile sidebar toggle and close handlers
   const mobileToggle = document.getElementById('mobile-sidebar-toggle');
   const sidebar = document.getElementById('sidebar');
+  const sidebarClose = document.getElementById('sidebar-close-btn');
+  const backdrop = document.getElementById('sidebar-backdrop');
+
+  function openMobileSidebar() {
+    sidebar.classList.add('open');
+    if (backdrop) backdrop.classList.add('active');
+    document.body.classList.add('sidebar-open');
+  }
+
+  function closeMobileSidebar() {
+    sidebar.classList.remove('open');
+    if (backdrop) backdrop.classList.remove('active');
+    document.body.classList.remove('sidebar-open');
+  }
+
   if (mobileToggle) {
-    mobileToggle.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
-      mobileToggle.innerHTML = sidebar.classList.contains('open') 
-        ? '<i class="fa-solid fa-xmark"></i> <span>Cerrar</span>' 
-        : '<i class="fa-solid fa-filter"></i> <span>Filtros</span>';
-    });
+    mobileToggle.addEventListener('click', openMobileSidebar);
+  }
+
+  if (sidebarClose) {
+    sidebarClose.addEventListener('click', closeMobileSidebar);
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener('click', closeMobileSidebar);
   }
 
   // Lightbox keyboard navigation

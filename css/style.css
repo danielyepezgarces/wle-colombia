@@ -869,44 +869,126 @@ dialog#lightbox-dialog::backdrop {
   font-weight: 700 !important;
 }
 
-/* Mobile Sidebar Toggle Button */
+/* Mobile Controls & Backdrop */
+.sidebar-close-btn,
+.sidebar-backdrop {
+  display: none;
+}
+
 .mobile-toggle-btn {
   display: none;
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  z-index: 30;
-  background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  color: #fff;
-  border: 1px solid var(--border-color);
-  padding: 10px 14px;
-  border-radius: var(--radius-md);
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: var(--shadow-md);
 }
 
 /* Responsive Media Queries */
 @media (max-width: 900px) {
   #sidebar {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
-    width: 340px;
+    width: min(360px, 86vw);
+    height: 100vh;
+    z-index: 2000;
     transform: translateX(-100%);
-    box-shadow: 0 0 30px rgba(0,0,0,0.7);
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.85);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   #sidebar.open {
     transform: translateX(0);
   }
 
+  /* Backdrop overlay when sidebar is open */
+  .sidebar-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(2px);
+    z-index: 1999;
+  }
+
+  .sidebar-backdrop.active {
+    display: block;
+  }
+
+  /* Close button inside sidebar header */
+  .sidebar-close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background: #202630;
+    border: 1px solid #3b4656;
+    border-radius: var(--radius-sm);
+    color: var(--text-main);
+    font-size: 1rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.15s ease;
+  }
+
+  .sidebar-close-btn:hover {
+    background: #2b333e;
+    color: var(--accent);
+  }
+
+  /* Mobile toggle button positioned beside Leaflet zoom/recenter controls (never overlapping) */
   .mobile-toggle-btn {
     display: flex;
     align-items: center;
+    gap: 7px;
+    position: absolute;
+    top: 10px;
+    left: 54px;
+    height: 32px;
+    padding: 0 13px;
+    background-color: #181d24 !important;
+    border: 1px solid #3b4656 !important;
+    border-radius: var(--radius-sm);
+    color: #ffffff !important;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .mobile-toggle-btn:hover {
+    background-color: #202630 !important;
+    border-color: #4b5563 !important;
+    color: var(--accent) !important;
+  }
+
+  /* Hide the toggle button completely when sidebar is open so it never covers the header */
+  body.sidebar-open .mobile-toggle-btn,
+  #sidebar.open ~ .mobile-toggle-btn {
+    display: none !important;
+  }
+
+  /* Adjust map legend size on mobile */
+  .map-legend {
+    bottom: 12px;
+    right: 12px;
+    max-width: 220px;
+    padding: 8px 12px;
+    font-size: 0.72rem;
+  }
+
+  .legend-title {
+    font-size: 0.75rem;
+    margin-bottom: 5px;
+    padding-bottom: 4px;
+  }
+
+  .legend-items {
+    gap: 4px;
+  }
+
+  .legend-row {
+    font-size: 0.72rem;
     gap: 6px;
   }
 

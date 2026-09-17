@@ -139,10 +139,13 @@ $regiones = [
 </head>
 <body>
 
-  <!-- Mobile Toggle Button -->
+  <!-- Mobile Toggle Button (Positioned cleanly beside Leaflet zoom controls) -->
   <button id="mobile-sidebar-toggle" class="mobile-toggle-btn" aria-label="Abrir panel de filtros">
     <i class="fa-solid fa-filter"></i> <span>Filtros</span>
   </button>
+
+  <!-- Mobile Backdrop Overlay -->
+  <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
 
   <div id="app-layout">
     <!-- Sidebar / Filter Panel -->
@@ -158,6 +161,10 @@ $regiones = [
             <p>Fotografías de la biodiversidad de Colombia</p>
           </div>
         </div>
+        <!-- Mobile Close Button (inside header, preventing any header overlap) -->
+        <button id="sidebar-close-btn" class="sidebar-close-btn" aria-label="Cerrar panel de filtros">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
       </header>
 
       <!-- Quick Stats (Pre-renderizados en PHP) -->
