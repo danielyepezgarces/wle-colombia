@@ -320,27 +320,27 @@ $regiones = [
         <div class="legend-items">
           <div class="legend-row">
             <span class="legend-color-box" style="background: var(--reg-andina);"></span>
-            <span>Región Andina (Cordilleras)</span>
+            <span>Región Andina</span>
           </div>
           <div class="legend-row">
             <span class="legend-color-box" style="background: var(--reg-caribe);"></span>
-            <span>Región Caribe (Norte Costero)</span>
+            <span>Región Caribe</span>
           </div>
           <div class="legend-row">
             <span class="legend-color-box" style="background: var(--reg-pacifica);"></span>
-            <span>Región Pacífica (Chocó Biogeográfico)</span>
+            <span>Región Pacífica</span>
           </div>
           <div class="legend-row">
             <span class="legend-color-box" style="background: var(--reg-orinoquia);"></span>
-            <span>Región Orinoquía (Llanos)</span>
+            <span>Región Orinoquía</span>
           </div>
           <div class="legend-row">
             <span class="legend-color-box" style="background: var(--reg-amazonia);"></span>
-            <span>Región Amazonía (Selva Sur)</span>
+            <span>Región Amazonía</span>
           </div>
           <div class="legend-row">
             <span class="legend-color-box" style="background: var(--reg-insular);"></span>
-            <span>Región Insular (San Andrés y Providencia)</span>
+            <span>Región Insular</span>
           </div>
         </div>
       </div>
