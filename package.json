@@ -1,0 +1,26 @@
+{
+  "name": "wle-colombia-mapa",
+  "version": "1.0.0",
+  "description": "Visualizador web interactivo para las fotografías de Wiki Loves Earth Colombia 2026 filtradas por regiones y departamentos.",
+  "scripts": {
+    "start": "python3 server.py 8080",
+    "convert": "python3 scripts/convert_wle_data.py",
+    "serve": "npx -y serve . -p 8080"
+  },
+  "keywords": [
+    "colombia",
+    "wle",
+    "wiki-loves-earth",
+    "geojson",
+    "leaflet",
+    "maps"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.3.1",
+    "leaflet": "^1.9.4",
+    "leaflet.markercluster": "^1.5.3",
+    "xlsx": "^0.18.5"
+  }
+}

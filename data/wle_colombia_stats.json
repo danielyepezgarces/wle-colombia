@@ -1,0 +1,171 @@
+{
+  "total_fotos": 2387,
+  "fotos_con_gps": 906,
+  "fotos_sin_gps": 1481,
+  "total_autores": 237,
+  "conteo_regiones": {
+    "Andina": 683,
+    "Pacífica": 102,
+    "Amazonía": 39,
+    "Caribe": 60,
+    "Orinoquía": 21,
+    "Insular": 1
+  },
+  "conteo_departamentos": {
+    "Cundinamarca": 213,
+    "Antioquia": 62,
+    "Risaralda": 6,
+    "Valle del Cauca": 45,
+    "Quindio": 26,
+    "Santander": 78,
+    "Caqueta": 1,
+    "Choco": 46,
+    "Bogotá D.C.": 170,
+    "Magdalena": 25,
+    "Huila": 12,
+    "Cauca": 10,
+    "Bolivar": 19,
+    "Boyaca": 28,
+    "Guaviare": 5,
+    "Atlantico": 6,
+    "La Guajira": 7,
+    "Tolima": 54,
+    "Caldas": 30,
+    "Meta": 18,
+    "Norte de Santander": 4,
+    "Cordoba": 3,
+    "Putumayo": 1,
+    "Guainia": 31,
+    "Vaupes": 1,
+    "San Andrés y Providencia": 1,
+    "Arauca": 3,
+    "Nariño": 1
+  },
+  "top_autores": [
+    {
+      "autor": "AmiGueko",
+      "total": 263,
+      "con_gps": 191
+    },
+    {
+      "autor": "Nathaly 1106",
+      "total": 154,
+      "con_gps": 0
+    },
+    {
+      "autor": "Diferoch",
+      "total": 143,
+      "con_gps": 143
+    },
+    {
+      "autor": "Johan Andrés Toro",
+      "total": 80,
+      "con_gps": 11
+    },
+    {
+      "autor": "Herme Cantero",
+      "total": 64,
+      "con_gps": 30
+    },
+    {
+      "autor": "Supertita",
+      "total": 62,
+      "con_gps": 62
+    },
+    {
+      "autor": "Nbareschu",
+      "total": 47,
+      "con_gps": 46
+    },
+    {
+      "autor": "Mottenpriesterin",
+      "total": 38,
+      "con_gps": 1
+    },
+    {
+      "autor": "Noeliachalfoun",
+      "total": 37,
+      "con_gps": 4
+    },
+    {
+      "autor": "Joseeem",
+      "total": 36,
+      "con_gps": 0
+    },
+    {
+      "autor": "Juli 2000 her",
+      "total": 35,
+      "con_gps": 0
+    },
+    {
+      "autor": "Jedidiahhorne",
+      "total": 32,
+      "con_gps": 0
+    },
+    {
+      "autor": "Jhas24.09",
+      "total": 31,
+      "con_gps": 0
+    },
+    {
+      "autor": "Elprofeta91",
+      "total": 29,
+      "con_gps": 29
+    },
+    {
+      "autor": "Mfrancoavellaneda",
+      "total": 26,
+      "con_gps": 5
+    },
+    {
+      "autor": "Rodrigomacrophoto",
+      "total": 25,
+      "con_gps": 24
+    },
+    {
+      "autor": "NMontoya (WMCO)",
+      "total": 25,
+      "con_gps": 24
+    },
+    {
+      "autor": "CHAVESJUAN19",
+      "total": 24,
+      "con_gps": 6
+    },
+    {
+      "autor": "Juanrapave",
+      "total": 24,
+      "con_gps": 11
+    },
+    {
+      "autor": "Laupedrazaa",
+      "total": 23,
+      "con_gps": 0
+    },
+    {
+      "autor": "Allysami2215",
+      "total": 22,
+      "con_gps": 0
+    },
+    {
+      "autor": "JJCL09",
+      "total": 22,
+      "con_gps": 20
+    },
+    {
+      "autor": "XimmoY",
+      "total": 21,
+      "con_gps": 21
+    },
+    {
+      "autor": "Estudiante0001",
+      "total": 20,
+      "con_gps": 12
+    },
+    {
+      "autor": "IvanVillacorte",
+      "total": 20,
+      "con_gps": 0
+    }
+  ]
+}
