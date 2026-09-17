@@ -248,11 +248,11 @@ $regiones = [
             <span>Fotógrafo / Usuario Wikimedia</span>
           </label>
           <select id="filter-author" class="select-control">
-            <option value="all">Todos los Fotógrafos (<?= htmlspecialchars($totalAutores) ?>)</option>
+            <option value="all">Todos los Fotógrafos (<?= htmlspecialchars($totalFotos) ?>)</option>
             <?php 
             if (!empty($stats['top_autores'])) {
                 foreach ($stats['top_autores'] as $autor) {
-                    echo '<option value="' . htmlspecialchars($autor['autor']) . '">' . htmlspecialchars($autor['autor']) . ' (' . htmlspecialchars($autor['con_gps']) . ')</option>';
+                    echo '<option value="' . htmlspecialchars($autor['autor']) . '">' . htmlspecialchars($autor['autor']) . ' (' . htmlspecialchars(number_format($autor['total'])) . ')</option>';
                 }
             }
             ?>

@@ -509,7 +509,13 @@ function updateFilters(sourceEvent = null) {
   if (sourceEvent !== 'department') {
     const deptSelect = document.getElementById('filter-department');
     const currentVal = state.activeDepartment;
-    deptSelect.innerHTML = `<option value="all">Todos los Departamentos (${totalForDepts})</option>`;
+    deptSelect.options.length = 0;
+
+    const defaultDeptOpt = document.createElement('option');
+    defaultDeptOpt.value = 'all';
+    defaultDeptOpt.textContent = `Todos los Departamentos (${totalForDepts.toLocaleString()})`;
+    if (currentVal === 'all') defaultDeptOpt.selected = true;
+    deptSelect.appendChild(defaultDeptOpt);
 
     const sortedDepts = Object.entries(deptFacetCounts).sort((a, b) => b[1] - a[1]);
     let stillValid = false;
@@ -517,7 +523,7 @@ function updateFilters(sourceEvent = null) {
     sortedDepts.forEach(([dept, count]) => {
       const opt = document.createElement('option');
       opt.value = dept;
-      opt.textContent = `${dept} (${count})`;
+      opt.textContent = `${dept} (${count.toLocaleString()})`;
       if (dept === currentVal) {
         opt.selected = true;
         stillValid = true;
@@ -527,21 +533,26 @@ function updateFilters(sourceEvent = null) {
 
     if (!stillValid && currentVal !== 'all') {
       state.activeDepartment = 'all';
+      defaultDeptOpt.selected = true;
     }
   }
 
   // 4. Cross-calculate dynamic facet counts for AUTHORS:
   // (given activeRegion, activeDepartment, and searchQuery)
+  // When no geographic filter is active, include all photos (including without GPS)
   const authorFacetCounts = {};
-  let totalMatchingAuthors = 0;
+  let totalMatchingPhotos = 0;
 
-  state.allPoints.forEach(feature => {
-    const p = feature.properties;
+  const pool = (state.activeRegion === 'all' && state.activeDepartment === 'all')
+    ? (state.allPhotos && state.allPhotos.length > 0 ? state.allPhotos : state.allPoints.map(f => f.properties))
+    : state.allPoints.map(f => f.properties);
+
+  pool.forEach(p => {
     if (state.activeRegion !== 'all' && p.region !== state.activeRegion) return;
     if (state.activeDepartment !== 'all' && p.departamento !== state.activeDepartment) return;
     if (!matchesText(p)) return;
 
-    totalMatchingAuthors++;
+    totalMatchingPhotos++;
     const autor = p.autor;
     if (autor) {
       authorFacetCounts[autor] = (authorFacetCounts[autor] || 0) + 1;
@@ -552,8 +563,13 @@ function updateFilters(sourceEvent = null) {
   if (sourceEvent !== 'author') {
     const authorSelect = document.getElementById('filter-author');
     const currentVal = state.activeAuthor;
-    const authorCount = Object.keys(authorFacetCounts).length;
-    authorSelect.innerHTML = `<option value="all">Todos los Fotógrafos (${authorCount})</option>`;
+    authorSelect.options.length = 0;
+
+    const defaultAuthorOpt = document.createElement('option');
+    defaultAuthorOpt.value = 'all';
+    defaultAuthorOpt.textContent = `Todos los Fotógrafos (${totalMatchingPhotos.toLocaleString()})`;
+    if (currentVal === 'all') defaultAuthorOpt.selected = true;
+    authorSelect.appendChild(defaultAuthorOpt);
 
     const sortedAuthors = Object.entries(authorFacetCounts).sort((a, b) => b[1] - a[1]);
     let stillValid = false;
@@ -561,7 +577,7 @@ function updateFilters(sourceEvent = null) {
     sortedAuthors.forEach(([author, count]) => {
       const opt = document.createElement('option');
       opt.value = author;
-      opt.textContent = `${author} (${count})`;
+      opt.textContent = `${author} (${count.toLocaleString()})`;
       if (author === currentVal) {
         opt.selected = true;
         stillValid = true;
@@ -571,6 +587,7 @@ function updateFilters(sourceEvent = null) {
 
     if (!stillValid && currentVal !== 'all') {
       state.activeAuthor = 'all';
+      defaultAuthorOpt.selected = true;
     }
   }
 
