@@ -17,13 +17,13 @@
   --primary-hover: #047857;
   --accent: #38bdf8;
   
-  /* Regional Colors */
-  --reg-andina: #2563eb;
-  --reg-caribe: #0891b2;
-  --reg-pacifica: #059669;
-  --reg-orinoquia: #d97706;
-  --reg-amazonia: #15803d;
-  --reg-insular: #7c3aed;
+  /* Regional Colors (Paleta de alto contraste y matices diferenciados) */
+  --reg-andina: #2563eb;    /* Azul Real */
+  --reg-caribe: #f59e0b;    /* Ámbar / Amarillo Sol */
+  --reg-pacifica: #06b6d4;  /* Turquesa / Cian Pacífico */
+  --reg-orinoquia: #ea580c; /* Naranja Atardecer Llanero */
+  --reg-amazonia: #16a34a;  /* Verde Selva Amazónica */
+  --reg-insular: #9333ea;   /* Violeta / Púrpura */
   
   --radius-lg: 12px;
   --radius-md: 8px;

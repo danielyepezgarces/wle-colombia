@@ -25,14 +25,14 @@ const state = {
   stats: null
 };
 
-// Region color palette
+// Region color palette (High-contrast distinct chromatic palette)
 const REGION_COLORS = {
-  'Andina': '#2563eb',
-  'Caribe': '#0891b2',
-  'Pacífica': '#059669',
-  'Orinoquía': '#d97706',
-  'Amazonía': '#15803d',
-  'Insular': '#7c3aed'
+  'Andina': '#2563eb',    // Azul Real
+  'Caribe': '#f59e0b',    // Ámbar / Amarillo Sol
+  'Pacífica': '#06b6d4',  // Turquesa / Cian Pacífico
+  'Orinoquía': '#ea580c', // Naranja Atardecer Llanero
+  'Amazonía': '#16a34a',  // Verde Selva Amazónica
+  'Insular': '#9333ea'    // Violeta / Púrpura
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -199,22 +199,24 @@ function renderRegionsLayer() {
 
   state.regionsLayer = L.geoJSON(state.regionsGeoJSON, {
     style: function(feature) {
-      const color = feature.properties.color || '#3b82f6';
+      const regName = feature.properties.nombre_region;
+      const color = REGION_COLORS[regName] || feature.properties.color || '#2563eb';
       return {
         fillColor: color,
         weight: 2,
-        opacity: 0.8,
+        opacity: 0.85,
         color: color,
         dashArray: '3',
-        fillOpacity: 0.15
+        fillOpacity: 0.2
       };
     },
     onEachFeature: function(feature, layer) {
       const props = feature.properties;
+      const regColor = REGION_COLORS[props.nombre_region] || props.color || '#2563eb';
       const count = (state.stats?.conteo_regiones && state.stats.conteo_regiones[props.nombre_region]) || 0;
       
       layer.bindTooltip(`
-        <div style="font-weight:700; color:#ffffff; font-size:13px; margin-bottom:2px;"><span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:${props.color}; margin-right:6px; vertical-align:middle;"></span>Región ${props.nombre_region}</div>
+        <div style="font-weight:700; color:#ffffff; font-size:13px; margin-bottom:2px;"><span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:${regColor}; margin-right:6px; vertical-align:middle;"></span>Región ${props.nombre_region}</div>
         <div style="font-size:12px; color:#38bdf8; font-weight:600;">${count} fotos geolocalizadas</div>
         <div style="font-size:11px; color:#e2e8f0; margin-top:4px;">Departamentos: ${props.departamentos.slice(0, 4).join(', ')}${props.departamentos.length > 4 ? '...' : ''}</div>
       `, { sticky: true, className: 'region-tooltip' });

@@ -55,12 +55,12 @@ REGION_MAP = {
 }
 
 REGION_COLORS = {
-    'Andina': '#2563eb',
-    'Caribe': '#0891b2',
-    'Pacífica': '#059669',
-    'Orinoquía': '#d97706',
-    'Amazonía': '#15803d',
-    'Insular': '#7c3aed'
+    'Andina': '#2563eb',    # Azul Real
+    'Caribe': '#f59e0b',    # Ámbar / Amarillo Sol
+    'Pacífica': '#06b6d4',  # Turquesa / Cian Pacífico
+    'Orinoquía': '#ea580c', # Naranja Atardecer
+    'Amazonía': '#16a34a',  # Verde Selva
+    'Insular': '#9333ea'    # Violeta
 }
 
 NAME_FORMAT = {
