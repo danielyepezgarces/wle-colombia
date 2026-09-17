@@ -121,9 +121,35 @@ $regiones = [
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wiki Loves Earth Colombia 2026 - Mapa Interactivo</title>
   <meta name="description" content="Visualizador cartográfico interactivo de las fotografías del concurso Wiki Loves Earth Colombia 2026 clasificado por regiones naturales y departamentos.">
+  <meta name="author" content="Daniel Yepez Garces, Wikimedia Colombia">
+  <meta name="keywords" content="Wiki Loves Earth, WLE Colombia 2026, Wikimedia Commons, Biodiversidad Colombia, Mapa Interactivo, Fotografía de Naturaleza">
+  <meta name="theme-color" content="#181d24">
+  <meta name="color-scheme" content="dark">
+
+  <!-- Open Graph / Facebook / WhatsApp / Telegram / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Wiki Loves Earth Colombia 2026 - Mapa Interactivo de Biodiversidad">
+  <meta property="og:description" content="Explora las fotografías georreferenciadas de la biodiversidad de Colombia clasificadas por regiones naturales y departamentos.">
+  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/c/ca/Biodiversidad_esfera.png">
+  <meta property="og:image:alt" content="Biodiversidad Esfera - Wiki Loves Earth Colombia 2026">
+  <meta property="og:site_name" content="Wikimedia Colombia">
+  <meta property="og:locale" content="es_CO">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Wiki Loves Earth Colombia 2026 - Mapa Interactivo">
+  <meta name="twitter:description" content="Explora las fotografías de la biodiversidad de Colombia clasificadas por regiones naturales y departamentos.">
+  <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/c/ca/Biodiversidad_esfera.png">
+  <meta name="twitter:image:alt" content="Wiki Loves Earth Colombia 2026">
+
+  <!-- Apple iOS Web App -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="WLE Colombia 2026">
 
   <!-- Favicon: Biodiversidad Esfera -->
   <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/c/ca/Biodiversidad_esfera.png">
+  <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/c/ca/Biodiversidad_esfera.png">
 
   <!-- Font Awesome Icons (Wikimedia Toolforge cdnjs con fallback local) -->
   <link rel="stylesheet" href="https://tools-static.wmflabs.org/cdnjs/ajax/libs/font-awesome/6.5.1/css/all.min.css" onerror="this.onerror=null;this.href='vendor/font-awesome/css/all.min.css';" />
