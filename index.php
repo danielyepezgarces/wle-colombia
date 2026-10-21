@@ -102,6 +102,7 @@ $stats = file_exists($statsFile) ? json_decode(file_get_contents($statsFile), tr
 
 $totalFotos = number_format($stats['total_fotos'] ?? 2387);
 $fotosGps = number_format($stats['fotos_con_gps'] ?? 906);
+$fotosSinGps = number_format($stats['fotos_sin_gps'] ?? 1481);
 $totalAutores = number_format($stats['total_autores'] ?? 74);
 $totalRegiones = count($stats['conteo_regiones'] ?? []);
 
@@ -232,7 +233,7 @@ $regiones = [
           </div>
           <div class="region-chips" id="region-chips">
             <button class="chip-btn active" data-region="all">
-              <span>Todas</span> <span class="chip-count">(<?= htmlspecialchars($fotosGps) ?>)</span>
+              <span>Todas</span> <span class="chip-count">(<?= htmlspecialchars($totalFotos) ?>)</span>
             </button>
             <?php foreach ($regiones as $regNombre => $regInfo): ?>
             <button class="chip-btn" data-region="<?= htmlspecialchars($regNombre) ?>">
@@ -240,6 +241,10 @@ $regiones = [
               <span><?= htmlspecialchars($regNombre) ?></span> <span class="chip-count">(<?= htmlspecialchars($regInfo['count']) ?>)</span>
             </button>
             <?php endforeach; ?>
+            <button class="chip-btn" data-region="Sin Región" title="Fotografías sin coordenadas GPS registradas">
+              <span class="dot-indicator" style="background:#94a3b8;"></span>
+              <span>Sin GPS</span> <span class="chip-count">(<?= htmlspecialchars($fotosSinGps) ?>)</span>
+            </button>
           </div>
         </div>
 
@@ -249,7 +254,8 @@ $regiones = [
             <span>Departamento de Colombia</span>
           </label>
           <select id="filter-department" class="select-control">
-            <option value="all">Todos los Departamentos (<?= htmlspecialchars($fotosGps) ?>)</option>
+            <option value="all">Todos los Departamentos (<?= htmlspecialchars($totalFotos) ?>)</option>
+            <option value="Sin GPS">📍 Sin Coordenadas GPS (<?= htmlspecialchars($fotosSinGps) ?>)</option>
             <?php 
             if (!empty($stats['conteo_departamentos'])) {
                 $sortedDepts = $stats['conteo_departamentos'];
@@ -443,15 +449,9 @@ $regiones = [
   <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <script>window.XLSX || document.write('<script src="vendor/xlsx/xlsx.full.min.js"><\/script>')</script>
 
-  <!-- Pre-cargado de datos dinámicos en PHP Vanilla para carga inmediata -->
+  <!-- Pre-cargado ultra ligero de estadísticas en PHP Vanilla -->
   <script>
-    window.PHP_INITIAL_DATA = {
-      puntos: <?= file_exists("$dataDir/wle_colombia_puntos.geojson") ? file_get_contents("$dataDir/wle_colombia_puntos.geojson") : 'null' ?>,
-      fotos: <?= file_exists("$dataDir/wle_colombia_fotos.json") ? file_get_contents("$dataDir/wle_colombia_fotos.json") : 'null' ?>,
-      regiones: <?= file_exists("$dataDir/colombia_regiones.geojson") ? file_get_contents("$dataDir/colombia_regiones.geojson") : 'null' ?>,
-      departamentos: <?= file_exists("$dataDir/colombia_departamentos.geojson") ? file_get_contents("$dataDir/colombia_departamentos.geojson") : 'null' ?>,
-      stats: <?= file_exists("$dataDir/wle_colombia_stats.json") ? file_get_contents("$dataDir/wle_colombia_stats.json") : 'null' ?>
-    };
+    window.PHP_STATS = <?= json_encode($stats, JSON_UNESCAPED_UNICODE) ?>;
   </script>
 
   <!-- App Application JS -->

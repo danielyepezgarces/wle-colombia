@@ -1017,3 +1017,92 @@ dialog#lightbox-dialog::backdrop {
     border-top: 1px solid var(--border-color);
   }
 }
+
+/* Badge para fotos sin coordenadas GPS en la cuadrícula de la galería */
+.gallery-card .card-badge-no-gps {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(4px);
+  color: #cbd5e1;
+  font-size: 0.58rem;
+  font-weight: 600;
+  padding: 2px 5px;
+  border-radius: 4px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  z-index: 1;
+}
+
+.gallery-card .card-badge-no-gps i {
+  color: #f87171;
+  font-size: 0.6rem;
+}
+
+/* Botón de paginación progresiva en la galería lateral */
+.gallery-load-more {
+  grid-column: 1 / -1;
+  background: rgba(30, 41, 59, 0.85);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.gallery-load-more:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Aviso flotante en el mapa cuando se filtran fotos sin GPS */
+.map-no-gps-notice {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(8px);
+  color: #e2e8f0;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+  animation: fadeInDown 0.3s ease;
+}
+
+.map-no-gps-notice i {
+  color: #38bdf8;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
