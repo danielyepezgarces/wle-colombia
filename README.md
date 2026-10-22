@@ -63,8 +63,9 @@ become wle-colombia
 cd /data/project/wle-colombia/
 git pull origin main
 
-# 3. Despliega con el script automatizado para Python 3.13:
-bash scripts/setup_toolforge_python.sh
+# 3. Despliega con el script 100% automatizado para Python 3.13:
+bash scripts/deploy_toolforge.sh
+# (o también: bash scripts/setup_toolforge_python.sh)
 
 # O manualmente paso a paso:
 toolforge webservice stop
