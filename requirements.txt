@@ -1,0 +1,6 @@
+# Dependencias para Wiki Loves Earth Colombia 2026 (Toolforge Python 3.13)
+# Nota: La aplicación WSGI base utiliza únicamente módulos de la biblioteca estándar
+# de Python (cero dependencias externas requeridas para uWSGI en Toolforge).
+
+# Servidor WSGI alternativo para pruebas locales / contenedores Docker
+# gunicorn>=23.0.0

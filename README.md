@@ -51,20 +51,65 @@ Para responder a la pregunta de cuál es el GeoJSON más fácil y la mejor maner
 
 ## 🚀 Cómo Ejecutar la Aplicación
 
-### Opción 1: Servidor CLI de PHP (Recomendado)
+### Opción 1: Wikimedia Toolforge con Python 3.13 (Recomendado para Mitigación)
+Debido a la contingencia de seguridad en el entorno PHP de Toolforge, la aplicación incluye una versión en **Python 3.13** nativo (sin dependencias obligatorias) con uWSGI:
+
+```bash
+# 1. Ingresa al bastion de Toolforge y accede a la cuenta de la herramienta:
+ssh <tu-usuario>@login.toolforge.org
+become wle-colombia
+
+# 2. Clona o actualiza el repositorio en Toolforge:
+cd /data/project/wle-colombia/
+git pull origin main
+
+# 3. Despliega con el script automatizado para Python 3.13:
+bash scripts/setup_toolforge_python.sh
+
+# O manualmente:
+toolforge webservice stop
+mkdir -p $HOME/www/python
+cp uwsgi.ini $HOME/www/python/uwsgi.ini
+ln -sfn $PWD $HOME/www/python/src
+toolforge webservice python3.13 start
+
+# 4. Verifica el estado:
+toolforge webservice status
+toolforge webservice logs -f
+```
+
+---
+
+### Opción 2: Servidor Local con Python 3.13 / npm
+```bash
+# Con Python directo (sin dependencias externas):
+python3 server.py 8080
+# o también:
+python3 app.py 8080
+
+# Con npm:
+npm start
+```
+Luego abre tu navegador en: [http://localhost:8080/](http://localhost:8080/)
+
+---
+
+### Opción 3: Servidor CLI de PHP
 ```bash
 php -S 0.0.0.0:8080
 ```
 Luego abre tu navegador en: [http://localhost:8080/](http://localhost:8080/) o [http://localhost:8080/index.php](http://localhost:8080/index.php)
 
-### Opción 2: Con Docker
+---
+
+### Opción 4: Con Docker
 ```bash
+# Con Python:
+docker run -d --name wle-python -p 8080:8080 -v "$PWD":/app -w /app python:3.13-slim python app.py 8080
+
+# Con PHP:
 docker run -d --name wle-php -p 8080:8080 -v "$PWD":/var/www/html -w /var/www/html php:8.4-cli php -S 0.0.0.0:8080
 ```
-
-### Opción 3: En un Servidor Web (Apache, Nginx, Wikimedia Toolforge)
-Copia la carpeta en el directorio web (ej. `/var/www/html`, `public_html` o Wikimedia Toolforge PHP webservice).
-El archivo `index.php` procesa y precarga la aplicación de forma inmediata junto a sus endpoints API (`?api=stats`, `?api=puntos`, `?api=export_csv`).
 
 ---
 
