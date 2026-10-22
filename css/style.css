@@ -1016,6 +1016,16 @@ dialog#lightbox-dialog::backdrop {
     border-left: none;
     border-top: 1px solid var(--border-color);
   }
+
+  /* En móvil, mostrar el aviso en el sidebar móvil que cubre la pantalla */
+  .sidebar-alert-notice:not(.hidden) {
+    display: flex;
+  }
+
+  /* En móvil, ocultar el aviso flotante del mapa para evitar colisiones */
+  .map-no-gps-notice {
+    display: none !important;
+  }
 }
 
 /* Badge para fotos sin coordenadas GPS en la cuadrícula de la galería */
@@ -1068,21 +1078,25 @@ dialog#lightbox-dialog::backdrop {
   transform: translateY(-1px);
 }
 
-/* Aviso prominente en el Sidebar (Galería) */
+/* Aviso prominente en el Sidebar (Galería) - Oculto por defecto en escritorio */
 .gallery-notice-container {
   margin-bottom: 10px;
 }
 
 .sidebar-alert-notice {
+  display: none;
   background: rgba(30, 41, 59, 0.95);
   border: 1px solid rgba(56, 189, 248, 0.4);
   border-left: 4px solid var(--accent);
   border-radius: var(--radius-sm);
   padding: 10px 12px;
-  display: flex;
   align-items: flex-start;
   gap: 10px;
   animation: fadeInDown 0.25s ease;
+}
+
+.sidebar-alert-notice.hidden {
+  display: none !important;
 }
 
 .sidebar-alert-notice .alert-icon {
@@ -1109,7 +1123,7 @@ dialog#lightbox-dialog::backdrop {
   margin: 0;
 }
 
-/* Aviso flotante en el mapa cuando se filtran fotos sin GPS */
+/* Aviso flotante en escritorio centrado sobre el mapa */
 .map-no-gps-notice {
   position: absolute;
   top: 20px;
@@ -1121,7 +1135,7 @@ dialog#lightbox-dialog::backdrop {
   color: #ffffff;
   border: 1px solid #38bdf8;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.8), 0 0 20px rgba(56, 189, 248, 0.35);
-  padding: 10px 20px;
+  padding: 10px 22px;
   border-radius: 30px;
   font-size: 0.85rem;
   font-weight: 600;
@@ -1132,6 +1146,11 @@ dialog#lightbox-dialog::backdrop {
   max-width: 90%;
   text-align: center;
   animation: fadeInDown 0.3s ease;
+  white-space: nowrap;
+}
+
+.map-no-gps-notice.hidden {
+  display: none !important;
 }
 
 .map-no-gps-notice i {

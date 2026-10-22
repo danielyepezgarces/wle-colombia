@@ -658,7 +658,7 @@ function updateNotices() {
     }
   }
 
-  // 2. Notice flotante sobre el Mapa
+  // 2. Notice flotante sobre el Mapa (centrado en la parte superior en escritorio)
   const mapContainer = document.getElementById('map-container');
   let mapNotice = document.getElementById('map-no-gps-notice');
 
@@ -673,9 +673,9 @@ function updateNotices() {
       <i class="fa-solid fa-circle-info"></i>
       <span>Mostrando ${state.filteredPhotos.length.toLocaleString()} fotos sin coordenadas GPS en la galería lateral</span>
     `;
-    mapNotice.style.display = 'flex';
+    mapNotice.classList.remove('hidden');
   } else if (mapNotice) {
-    mapNotice.style.display = 'none';
+    mapNotice.classList.add('hidden');
   }
 }
 
