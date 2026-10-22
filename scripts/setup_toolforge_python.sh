@@ -39,15 +39,23 @@ if [ "$REPO_DIR" != "$SRC_DIR" ]; then
     echo "✔ Enlace simbólico creado: $SRC_DIR -> $REPO_DIR"
 fi
 
-# 6. Preparar entorno virtual venv (requerido por convención de Toolforge)
+# 6. Preparar entorno virtual venv mediante el contenedor oficial de Toolforge
 if [ ! -d "$VENV_DIR" ]; then
-    echo "📦 Creando entorno virtual Python 3.13 en $VENV_DIR..."
-    python3 -m venv "$VENV_DIR" || echo "Aviso: no se pudo crear venv directamente (se utilizará entorno de contenedor Toolforge)"
+    echo "📦 Inicializando entorno virtual Python 3.13 dentro del contenedor de Toolforge..."
+    if command -v toolforge >/dev/null 2>&1; then
+        toolforge webservice python3.13 shell -- webservice-python-bootstrap || true
+    elif command -v webservice >/dev/null 2>&1; then
+        webservice python3.13 shell -- webservice-python-bootstrap || true
+    fi
 fi
 
 # 7. Iniciar el webservice oficial con Python 3.13
 echo "🚀 Iniciando webservice en Toolforge con Python 3.13..."
-toolforge webservice python3.13 start
+if command -v toolforge >/dev/null 2>&1; then
+    toolforge webservice python3.13 start
+else
+    webservice python3.13 start
+fi
 
 echo ""
 echo "📊 Verificando estado del webservice..."

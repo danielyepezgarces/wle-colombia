@@ -66,11 +66,16 @@ git pull origin main
 # 3. Despliega con el script automatizado para Python 3.13:
 bash scripts/setup_toolforge_python.sh
 
-# O manualmente:
+# O manualmente paso a paso:
 toolforge webservice stop
 mkdir -p $HOME/www/python
 cp uwsgi.ini $HOME/www/python/uwsgi.ini
-ln -sfn $PWD $HOME/www/python/src
+ln -sfn /data/project/wle-colombia $HOME/www/python/src
+
+# Crear el entorno virtual dentro del contenedor de Toolforge:
+toolforge webservice python3.13 shell -- webservice-python-bootstrap
+
+# Iniciar el servicio web con Python 3.13:
 toolforge webservice python3.13 start
 
 # 4. Verifica el estado:
