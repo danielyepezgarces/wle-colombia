@@ -75,7 +75,7 @@ El archivo `index.php` procesa y precarga la aplicación de forma inmediata junt
 - **Exclusión Mutua de Capas Cartográficas**: Conmutadores de capa estrictamente exclusivos entre la capa de las 6 Regiones Naturales y la de los 33 Departamentos, impidiendo que ambas capas se superpongan en el mapa.
 - **Diseño Sobrio y Plano (Estilo Wikimedia Codex)**: Eliminación de gradientes llamativos y brillos en la barra lateral, utilizando una interfaz sobria en tonos slate/carbón mate, tipografía legible y controles planos.
 - **Wikimedia Maps (`maps.wikimedia.org`) / OpenStreetMap / OpenTopoMap**: Capas base 100% Open Source y de cultura libre (ODbL / CC-BY-SA), sin marcas de agua comerciales, conformes a los estándares de la Fundación Wikimedia.
-- **Wikimedia Toolforge cdnjs (`tools-static.wmflabs.org`)**: Todas las librerías frontend (Leaflet, MarkerCluster, Font Awesome y SheetJS) se cargan desde el CDN oficial de Wikimedia Toolforge con fallback automático a la carpeta local `vendor/`, respetando las directivas de privacidad de la Fundación Wikimedia (sin CDNs de terceros ni fuentes externas).
+- **Cloudflare cdnjs (`cdnjs.cloudflare.com`)**: Todas las librerías frontend (Leaflet, MarkerCluster, Font Awesome y SheetJS) se cargan desde el CDN de Cloudflare con fallback automático a la carpeta local `vendor/`.
 - **Exportación a Excel Dinámica (.xlsx)**: Descarga en `.xlsx` los resultados según los filtros activos, conservando exactamente las columnas originales:
   1. `Usuario / Autor`
   2. `Nombre de Archivo`

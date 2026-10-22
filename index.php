@@ -152,14 +152,14 @@ $regiones = [
   <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/c/ca/Biodiversidad_esfera.png">
   <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/c/ca/Biodiversidad_esfera.png">
 
-  <!-- Font Awesome Icons (Wikimedia Toolforge cdnjs con fallback local) -->
-  <link rel="stylesheet" href="https://tools-static.wmflabs.org/cdnjs/ajax/libs/font-awesome/6.5.1/css/all.min.css" onerror="this.onerror=null;this.href='vendor/font-awesome/css/all.min.css';" />
+  <!-- Font Awesome Icons (Cloudflare cdnjs con fallback local) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" onerror="this.onerror=null;this.href='vendor/font-awesome/css/all.min.css';" />
 
-  <!-- Leaflet CSS (Wikimedia Toolforge cdnjs con fallback local a vendor/) -->
-  <link rel="stylesheet" href="https://tools-static.wmflabs.org/cdnjs/ajax/libs/leaflet/1.9.4/leaflet.css" onerror="this.onerror=null;this.href='vendor/leaflet/leaflet.css';" />
-  <!-- Leaflet MarkerCluster CSS (Wikimedia Toolforge cdnjs con fallback local a vendor/) -->
-  <link rel="stylesheet" href="https://tools-static.wmflabs.org/cdnjs/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css" onerror="this.onerror=null;this.href='vendor/leaflet.markercluster/MarkerCluster.css';" />
-  <link rel="stylesheet" href="https://tools-static.wmflabs.org/cdnjs/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css" onerror="this.onerror=null;this.href='vendor/leaflet.markercluster/MarkerCluster.Default.css';" />
+  <!-- Leaflet CSS (Cloudflare cdnjs con fallback local a vendor/) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" onerror="this.onerror=null;this.href='vendor/leaflet/leaflet.css';" />
+  <!-- Leaflet MarkerCluster CSS (Cloudflare cdnjs con fallback local a vendor/) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css" onerror="this.onerror=null;this.href='vendor/leaflet.markercluster/MarkerCluster.css';" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css" onerror="this.onerror=null;this.href='vendor/leaflet.markercluster/MarkerCluster.Default.css';" />
 
   <!-- App Custom Styles -->
   <link rel="stylesheet" href="css/style.css?v=<?= file_exists("$baseDir/css/style.css") ? filemtime("$baseDir/css/style.css") : '1' ?>">
@@ -452,16 +452,16 @@ $regiones = [
     </div>
   </dialog>
 
-  <!-- Leaflet JS (Wikimedia Toolforge cdnjs con fallback local) -->
-  <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+  <!-- Leaflet JS (Cloudflare cdnjs con fallback local) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
   <script>window.L || document.write('<script src="vendor/leaflet/leaflet.js"><\/script>')</script>
 
-  <!-- Leaflet MarkerCluster JS (Wikimedia Toolforge cdnjs con fallback local) -->
-  <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"></script>
+  <!-- Leaflet MarkerCluster JS (Cloudflare cdnjs con fallback local) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"></script>
   <script>window.L && L.MarkerClusterGroup || document.write('<script src="vendor/leaflet.markercluster/leaflet.markercluster.js"><\/script>')</script>
 
-  <!-- SheetJS XLSX (Wikimedia Toolforge cdnjs con fallback local) -->
-  <script src="https://tools-static.wmflabs.org/cdnjs/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <!-- SheetJS XLSX (Cloudflare cdnjs con fallback local) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <script>window.XLSX || document.write('<script src="vendor/xlsx/xlsx.full.min.js"><\/script>')</script>
 
   <!-- Pre-cargado ultra ligero de estadísticas en PHP Vanilla -->
