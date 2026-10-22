@@ -389,23 +389,6 @@ function updateMapMarkers() {
 
   state.clusterGroup.addLayers(markers);
 
-  // Manejo de aviso flotante cuando no hay puntos en el mapa pero sí fotos sin GPS
-  const mapContainer = document.getElementById('map-container');
-  let noGpsNotice = document.getElementById('map-no-gps-notice');
-
-  if (state.filteredPoints.length === 0 && state.filteredPhotos.length > 0) {
-    if (!noGpsNotice) {
-      noGpsNotice = document.createElement('div');
-      noGpsNotice.id = 'map-no-gps-notice';
-      noGpsNotice.className = 'map-no-gps-notice';
-      mapContainer.appendChild(noGpsNotice);
-    }
-    noGpsNotice.innerHTML = `<i class="fa-solid fa-location-crosshairs-slash"></i> Mostrando ${state.filteredPhotos.length.toLocaleString()} fotos sin coordenadas GPS en la galería lateral`;
-    noGpsNotice.style.display = 'flex';
-  } else if (noGpsNotice) {
-    noGpsNotice.style.display = 'none';
-  }
-
   // Centrar mapa según selección
   if (markers.length > 0 && bounds.isValid()) {
     if (state.activeRegion !== 'all' || state.activeDepartment !== 'all' || state.activeAuthor !== 'all') {
@@ -640,11 +623,60 @@ function updateFilters(sourceEvent = null) {
     }
   }
 
-  // Actualizar mapa, galería y etiquetas
+  // Actualizar mapa, avisos, galería y etiquetas
   updateMapMarkers();
+  updateNotices();
   renderGalleryPreview();
   updateFilteredCountBadge();
   updateExportBadge();
+}
+
+/**
+ * Actualizar avisos destacados de fotos sin GPS tanto en el Sidebar como en el Mapa
+ */
+function updateNotices() {
+  const isNoGpsFiltered = 
+    state.activeRegion === 'Sin Región' || 
+    state.activeDepartment === 'Sin GPS' || 
+    (state.filteredPoints.length === 0 && state.filteredPhotos.length > 0);
+
+  // 1. Notice en el Sidebar (Galería de Fotos)
+  const sidebarNoticeContainer = document.getElementById('gallery-notice-container');
+  if (sidebarNoticeContainer) {
+    if (isNoGpsFiltered) {
+      sidebarNoticeContainer.innerHTML = `
+        <div class="sidebar-alert-notice">
+          <div class="alert-icon"><i class="fa-solid fa-circle-info"></i></div>
+          <div class="alert-text">
+            <strong>Mostrando fotos sin ubicación GPS (${state.filteredPhotos.length.toLocaleString()})</strong>
+            <p>Estas fotografías no cuentan con coordenadas en sus metadatos para posicionarse en el mapa, pero puedes explorarlas aquí y abrirlas en el visor HD.</p>
+          </div>
+        </div>
+      `;
+    } else {
+      sidebarNoticeContainer.innerHTML = '';
+    }
+  }
+
+  // 2. Notice flotante sobre el Mapa
+  const mapContainer = document.getElementById('map-container');
+  let mapNotice = document.getElementById('map-no-gps-notice');
+
+  if (isNoGpsFiltered) {
+    if (!mapNotice) {
+      mapNotice = document.createElement('div');
+      mapNotice.id = 'map-no-gps-notice';
+      mapNotice.className = 'map-no-gps-notice';
+      mapContainer.appendChild(mapNotice);
+    }
+    mapNotice.innerHTML = `
+      <i class="fa-solid fa-circle-info"></i>
+      <span>Mostrando ${state.filteredPhotos.length.toLocaleString()} fotos sin coordenadas GPS en la galería lateral</span>
+    `;
+    mapNotice.style.display = 'flex';
+  } else if (mapNotice) {
+    mapNotice.style.display = 'none';
+  }
 }
 
 function updateExportBadge() {

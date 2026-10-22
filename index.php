@@ -317,6 +317,7 @@ $regiones = [
             <span>Explorador de Fotos</span>
             <span id="filtered-count-badge" class="badge-count">Cargando...</span>
           </div>
+          <div id="gallery-notice-container" class="gallery-notice-container"></div>
           <div id="gallery-grid" class="gallery-grid">
             <!-- Dynamically populated -->
           </div>
