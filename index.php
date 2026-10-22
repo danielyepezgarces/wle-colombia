@@ -212,6 +212,17 @@ $regiones = [
 
       <!-- Scrollable Body -->
       <div class="sidebar-body">
+
+        <!-- Aviso de servicio e inactividad de Toolforge para Móvil -->
+        <div id="toolforge-mobile-notice" class="toolforge-notice toolforge-mobile" role="alert">
+          <div class="toolforge-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div class="toolforge-text">
+            <strong>Aviso de Servicio:</strong> Debido a la inactividad de <code>wle-colombia.toolforge.org</code> en Wikimedia Toolforge, esta web opera temporalmente en este servidor de respaldo optimizado.
+          </div>
+          <button type="button" class="toolforge-close" onclick="dismissToolforgeNotice()" title="Cerrar aviso" aria-label="Cerrar aviso">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
         
         <!-- Search -->
         <div class="form-group">
@@ -348,6 +359,17 @@ $regiones = [
     <!-- Map Container -->
     <main id="map-container" role="main">
       <div id="map"></div>
+
+      <!-- Aviso de servicio e inactividad de Toolforge centrado sobre el mapa (Desktop) -->
+      <div id="toolforge-desktop-notice" class="toolforge-notice toolforge-desktop" role="alert">
+        <div class="toolforge-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <div class="toolforge-text">
+          <strong>Aviso de Servicio:</strong> Debido a la inactividad de <a href="https://wle-colombia.toolforge.org" target="_blank" rel="noopener noreferrer">wle-colombia.toolforge.org</a> en Wikimedia Toolforge, esta herramienta opera temporalmente en este servidor de respaldo de alta velocidad.
+        </div>
+        <button type="button" class="toolforge-close" onclick="dismissToolforgeNotice()" title="Cerrar aviso" aria-label="Cerrar aviso">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
 
       <!-- Aviso centrado sobre el mapa para Desktop -->
       <div id="map-no-gps-notice" class="map-no-gps-notice hidden" role="status">

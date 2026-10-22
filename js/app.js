@@ -1096,6 +1096,21 @@ window.closeLightbox = function() {
   document.getElementById('lightbox-dialog').close();
 };
 
+/**
+ * Cerrar y recordar el aviso de inactividad de Toolforge
+ */
+window.dismissToolforgeNotice = function() {
+  document.querySelectorAll('.toolforge-notice').forEach(el => el.classList.add('hidden'));
+  try {
+    sessionStorage.setItem('wle_toolforge_dismissed', '1');
+  } catch(e) {}
+};
+
+// Si el usuario ya descartó el aviso en la sesión, ocultarlo
+if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('wle_toolforge_dismissed') === '1') {
+  document.querySelectorAll('.toolforge-notice').forEach(el => el.classList.add('hidden'));
+}
+
 function showLoading(show) {
   const loader = document.getElementById('map-loader');
   if (loader) {
