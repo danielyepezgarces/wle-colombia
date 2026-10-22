@@ -640,42 +640,30 @@ function updateNotices() {
     state.activeDepartment === 'Sin GPS' || 
     (state.filteredPoints.length === 0 && state.filteredPhotos.length > 0);
 
-  // 1. Notice en el Sidebar (Galería de Fotos)
-  const sidebarNoticeContainer = document.getElementById('gallery-notice-container');
-  if (sidebarNoticeContainer) {
+  const countStr = state.filteredPhotos.length.toLocaleString();
+
+  // 1. Notice en el Sidebar (para móvil)
+  const sidebarNotice = document.getElementById('sidebar-no-gps-notice');
+  const sidebarTitle = document.getElementById('sidebar-notice-title');
+  if (sidebarNotice) {
     if (isNoGpsFiltered) {
-      sidebarNoticeContainer.innerHTML = `
-        <div class="sidebar-alert-notice">
-          <div class="alert-icon"><i class="fa-solid fa-circle-info"></i></div>
-          <div class="alert-text">
-            <strong>Mostrando fotos sin ubicación GPS (${state.filteredPhotos.length.toLocaleString()})</strong>
-            <p>Estas fotografías no cuentan con coordenadas en sus metadatos para posicionarse en el mapa, pero puedes explorarlas aquí y abrirlas en el visor HD.</p>
-          </div>
-        </div>
-      `;
+      if (sidebarTitle) sidebarTitle.innerText = `Mostrando fotos sin GPS (${countStr})`;
+      sidebarNotice.classList.remove('hidden');
     } else {
-      sidebarNoticeContainer.innerHTML = '';
+      sidebarNotice.classList.add('hidden');
     }
   }
 
   // 2. Notice flotante sobre el Mapa (centrado en la parte superior en escritorio)
-  const mapContainer = document.getElementById('map-container');
-  let mapNotice = document.getElementById('map-no-gps-notice');
-
-  if (isNoGpsFiltered) {
-    if (!mapNotice) {
-      mapNotice = document.createElement('div');
-      mapNotice.id = 'map-no-gps-notice';
-      mapNotice.className = 'map-no-gps-notice';
-      mapContainer.appendChild(mapNotice);
+  const mapNotice = document.getElementById('map-no-gps-notice');
+  const mapText = document.getElementById('map-no-gps-text');
+  if (mapNotice) {
+    if (isNoGpsFiltered) {
+      if (mapText) mapText.innerText = `Mostrando ${countStr} fotos sin coordenadas GPS en la galería lateral`;
+      mapNotice.classList.remove('hidden');
+    } else {
+      mapNotice.classList.add('hidden');
     }
-    mapNotice.innerHTML = `
-      <i class="fa-solid fa-circle-info"></i>
-      <span>Mostrando ${state.filteredPhotos.length.toLocaleString()} fotos sin coordenadas GPS en la galería lateral</span>
-    `;
-    mapNotice.classList.remove('hidden');
-  } else if (mapNotice) {
-    mapNotice.classList.add('hidden');
   }
 }
 

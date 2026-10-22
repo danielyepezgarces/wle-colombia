@@ -162,7 +162,7 @@ $regiones = [
   <link rel="stylesheet" href="https://tools-static.wmflabs.org/cdnjs/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css" onerror="this.onerror=null;this.href='vendor/leaflet.markercluster/MarkerCluster.Default.css';" />
 
   <!-- App Custom Styles -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=<?= file_exists("$baseDir/css/style.css") ? filemtime("$baseDir/css/style.css") : '1' ?>">
 </head>
 <body>
 
@@ -317,7 +317,15 @@ $regiones = [
             <span>Explorador de Fotos</span>
             <span id="filtered-count-badge" class="badge-count">Cargando...</span>
           </div>
-          <div id="gallery-notice-container" class="gallery-notice-container"></div>
+          <div id="gallery-notice-container" class="gallery-notice-container">
+            <div id="sidebar-no-gps-notice" class="sidebar-alert-notice hidden">
+              <div class="alert-icon"><i class="fa-solid fa-circle-info"></i></div>
+              <div class="alert-text">
+                <strong id="sidebar-notice-title">Mostrando fotografías sin GPS</strong>
+                <p id="sidebar-notice-desc">Estas fotos no cuentan con coordenadas en sus metadatos para posicionarse en el mapa, pero puedes explorarlas aquí y abrirlas en el visor HD.</p>
+              </div>
+            </div>
+          </div>
           <div id="gallery-grid" class="gallery-grid">
             <!-- Dynamically populated -->
           </div>
@@ -340,6 +348,12 @@ $regiones = [
     <!-- Map Container -->
     <main id="map-container" role="main">
       <div id="map"></div>
+
+      <!-- Aviso centrado sobre el mapa para Desktop -->
+      <div id="map-no-gps-notice" class="map-no-gps-notice hidden" role="status">
+        <i class="fa-solid fa-circle-info"></i>
+        <span id="map-no-gps-text">Mostrando fotos sin coordenadas GPS en la galería lateral</span>
+      </div>
 
       <!-- Map Legend -->
       <div class="map-legend">
@@ -456,6 +470,6 @@ $regiones = [
   </script>
 
   <!-- App Application JS -->
-  <script src="js/app.js"></script>
+  <script src="js/app.js?v=<?= file_exists("$baseDir/js/app.js") ? filemtime("$baseDir/js/app.js") : '1' ?>"></script>
 </body>
 </html>
