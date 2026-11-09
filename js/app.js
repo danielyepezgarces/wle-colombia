@@ -938,12 +938,14 @@ function setupEventListeners() {
   // Selector de Edición WLE 2026 vs WikiDía 2026
   const tabWle = document.getElementById('tab-wle');
   const tabWikidia = document.getElementById('tab-wikidia');
+  const mapTabWle = document.getElementById('map-tab-wle');
+  const mapTabWikidia = document.getElementById('map-tab-wikidia');
   const btnSync = document.getElementById('btn-sync-wikidia');
 
-  if (tabWle && tabWikidia) {
-    tabWle.addEventListener('click', () => switchEdition('wle'));
-    tabWikidia.addEventListener('click', () => switchEdition('wikidia'));
-  }
+  if (tabWle) tabWle.addEventListener('click', () => switchEdition('wle'));
+  if (tabWikidia) tabWikidia.addEventListener('click', () => switchEdition('wikidia'));
+  if (mapTabWle) mapTabWle.addEventListener('click', () => switchEdition('wle'));
+  if (mapTabWikidia) mapTabWikidia.addEventListener('click', () => switchEdition('wikidia'));
 
   if (btnSync) {
     btnSync.addEventListener('click', syncWikidiaFromCommons);
@@ -956,11 +958,15 @@ function setupEventListeners() {
 async function switchEdition(edition) {
   const tabWle = document.getElementById('tab-wle');
   const tabWikidia = document.getElementById('tab-wikidia');
+  const mapTabWle = document.getElementById('map-tab-wle');
+  const mapTabWikidia = document.getElementById('map-tab-wikidia');
   const banner = document.getElementById('wikidia-banner');
 
   if (edition === 'wikidia') {
     if (tabWle) { tabWle.style.background = 'transparent'; tabWle.style.color = '#94a3b8'; }
     if (tabWikidia) { tabWikidia.style.background = '#4f46e5'; tabWikidia.style.color = '#ffffff'; }
+    if (mapTabWle) { mapTabWle.style.background = 'transparent'; mapTabWle.style.color = '#94a3b8'; }
+    if (mapTabWikidia) { mapTabWikidia.style.background = '#4f46e5'; mapTabWikidia.style.color = '#ffffff'; }
     if (banner) banner.classList.remove('hidden');
 
     if (!state.wlePoints) {
@@ -1005,6 +1011,8 @@ async function switchEdition(edition) {
   } else {
     if (tabWikidia) { tabWikidia.style.background = 'transparent'; tabWikidia.style.color = '#94a3b8'; }
     if (tabWle) { tabWle.style.background = '#10b981'; tabWle.style.color = '#ffffff'; }
+    if (mapTabWikidia) { mapTabWikidia.style.background = 'transparent'; mapTabWikidia.style.color = '#94a3b8'; }
+    if (mapTabWle) { mapTabWle.style.background = '#10b981'; mapTabWle.style.color = '#ffffff'; }
     if (banner) banner.classList.add('hidden');
 
     if (state.wlePoints) {

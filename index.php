@@ -413,6 +413,16 @@ $regiones = [
     <main id="map-container" role="main">
       <div id="map"></div>
 
+      <!-- Selector Flotante de Edición visible sobre el mapa -->
+      <div class="map-edition-switcher" style="position: absolute; top: 18px; left: 60px; z-index: 1000; display: flex; gap: 6px; background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(10px); padding: 4px 6px; border-radius: 30px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+        <button id="map-tab-wle" class="edition-pill active" style="border: none; background: #10b981; color: #fff; font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 20px; cursor: pointer; transition: all 0.2s;">
+          🌿 WLE Colombia
+        </button>
+        <button id="map-tab-wikidia" class="edition-pill" style="border: none; background: transparent; color: #94a3b8; font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 20px; cursor: pointer; transition: all 0.2s;" title="Edición Especial WikiDía 2026 - Caminata Quinta de Bolívar">
+          🏛️ WikiDía 2026 (Quinta de Bolívar)
+        </button>
+      </div>
+
       <!-- Aviso centrado sobre el mapa para Desktop -->
       <div id="map-no-gps-notice" class="map-no-gps-notice hidden" role="status">
         <i class="fa-solid fa-circle-info"></i>
