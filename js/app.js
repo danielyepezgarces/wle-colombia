@@ -7,9 +7,10 @@
 // Global State
 const state = {
   map: null,
+  currentEdition: 'wle',
   allPoints: [],        // Fotografías con coordenadas para el mapa
   filteredPoints: [],   // Puntos filtrados activos en Leaflet
-  allPhotos: [],        // Colección completa de las 2.387 fotos (con y sin GPS)
+  allPhotos: [],        // Colección completa de las fotos (con y sin GPS)
   filteredPhotos: [],   // Colección filtrada activa para galería lateral y visor
   regionsGeoJSON: null,
   departmentsGeoJSON: null,
@@ -23,11 +24,18 @@ const state = {
   showRegionsLayer: true,
   showDepartmentsLayer: false,
   currentLightboxIndex: -1,
-  currentEdition: 'wle',
   stats: window.PHP_STATS || null,
   galleryPage: 1,
-  galleryPageSize: 24
+  galleryPageSize: 24,
+  wlePoints: null,
+  wlePhotos: null,
+  wleStats: null
 };
+
+// Coordenadas de referencia
+const COLOMBIA_CENTER = [4.570868, -74.297333];
+// Quinta de Bolívar centrada perfectamente en el mapa (ajuste diagonal sur-occidental)
+const QUINTA_BOLIVAR_CENTER = [4.602050, -74.065850];
 
 // Region color palette (High-contrast distinct chromatic palette)
 const REGION_COLORS = {
@@ -87,9 +95,7 @@ document.addEventListener('DOMContentLoaded', async () => {
  * Initialize Leaflet Map
  */
 function initMap(initialMode = 'wle') {
-  const COLOMBIA_CENTER = [4.570868, -74.297333];
-  const QUINTA_BOLIVAR_CENTER = [4.602492, -74.065487];
-  const isWikidia = initialMode === 'wikidia';
+  const isWikidia = initialMode === 'wikidia' || state.currentEdition === 'wikidia';
 
   state.map = L.map('map', {
     center: isWikidia ? QUINTA_BOLIVAR_CENTER : COLOMBIA_CENTER,
@@ -102,7 +108,7 @@ function initMap(initialMode = 'wle') {
   // Zoom control on top-left
   L.control.zoom({ position: 'topleft' }).addTo(state.map);
 
-  // Recenter Colombia Control
+  // Recenter Colombia / Quinta de Bolivar Control
   const RecenterControl = L.Control.extend({
     options: { position: 'topleft' },
     onAdd: function() {
@@ -117,10 +123,11 @@ function initMap(initialMode = 'wle') {
       L.DomEvent.disableClickPropagation(container);
       L.DomEvent.on(btn, 'click', (e) => {
         L.DomEvent.preventDefault(e);
-        if (state.currentEdition === 'wikidia') {
-          state.map.setView([4.602492, -74.065487], 18);
+        const inWikidia = state.currentEdition === 'wikidia' || window.location.pathname.includes('/wikidia') || window.location.search.includes('edition=wikidia');
+        if (inWikidia) {
+          state.map.setView(QUINTA_BOLIVAR_CENTER, 18);
         } else {
-          state.map.setView(COLOMBIA_CENTER, DEFAULT_ZOOM);
+          state.map.setView(COLOMBIA_CENTER, 6);
         }
       });
       return container;
@@ -1085,8 +1092,8 @@ async function switchEdition(edition) {
       populateFilterDropdowns();
       updateFilters();
 
-      // Enfocar Casa Museo Quinta de Bolívar con zoom cercano detallado
-      state.map.setView([4.602492, -74.065487], 18);
+      // Enfocar Casa Museo Quinta de Bolívar con zoom cercano detallado y centrado
+      state.map.setView(QUINTA_BOLIVAR_CENTER, 18);
 
       const bannerText = document.getElementById('wikidia-banner-text');
       if (bannerText) {
