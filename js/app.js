@@ -74,12 +74,18 @@ document.addEventListener('DOMContentLoaded', async () => {
       state.wleStats = stats;
     }).catch(() => {});
 
-    await switchEdition('wikidia');
+    await switchEdition('wikidia', false);
   } else {
     await loadData();
     populateFilterDropdowns();
     updateFilters();
   }
+
+  // Responder a eventos de navegación atrás/adelante del navegador
+  window.addEventListener('popstate', (e) => {
+    const isWikidia = window.location.pathname.includes('/wikidia') || window.location.search.includes('edition=wikidia');
+    switchEdition(isWikidia ? 'wikidia' : 'wle', false);
+  });
 
   // Responder a cambios de hash en vivo (#wikidia / #wle)
   window.addEventListener('hashchange', () => {
@@ -1023,8 +1029,16 @@ function setupEventListeners() {
 /**
  * Switch between WLE Colombia and WikiDía 2026 editions
  */
-async function switchEdition(edition) {
+async function switchEdition(edition, updateUrl = true) {
   state.currentEdition = edition;
+
+  // Actualizar la URL dinámicamente con History API sin recargar la página
+  if (updateUrl && window.history && window.history.pushState) {
+    const targetUrl = edition === 'wikidia' ? '/wikidia/' : '/';
+    if (window.location.pathname !== targetUrl) {
+      window.history.pushState({ edition }, '', targetUrl);
+    }
+  }
 
   const tabWle = document.getElementById('tab-wle');
   const tabWikidia = document.getElementById('tab-wikidia');
