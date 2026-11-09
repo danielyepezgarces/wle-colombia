@@ -55,7 +55,7 @@ do {
 
     $raw = @file_get_contents($url, false, $context);
     if (!$raw) {
-        echo "⚠ No se pudo conectar a la API de Commons o la categoría aún no tiene archivos.\n";
+        echo "[!] No se pudo conectar a la API de Commons o la categoría aún no tiene archivos.\n";
         break;
     }
 
@@ -152,7 +152,7 @@ file_put_contents($cacheFile, json_encode($geojson, JSON_PRETTY_PRINT | JSON_UNE
 file_put_contents($fotosFile, json_encode($fotos, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 file_put_contents($statsFile, json_encode($stats, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 
-echo "✔ Sincronización finalizada.\n";
+echo "[+] Sincronizacion finalizada.\n";
 echo "  • Total de fotos encontradas: " . count($features) . "\n";
 echo "  • Archivos generados en data/:\n";
 echo "    - $cacheFile\n";

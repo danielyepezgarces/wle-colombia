@@ -223,8 +223,8 @@ $regiones = [
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Biodiversidad_esfera.png" alt="Biodiversidad Esfera">
           </div>
           <div class="brand-titles">
-            <h1>Wiki Loves Earth <span class="year-tag">2026</span></h1>
-            <p>Fotografías de la biodiversidad de Colombia</p>
+            <h1 id="brand-title">Wiki Loves Earth <span class="year-tag">2026</span></h1>
+            <p id="brand-subtitle">Fotografías de la biodiversidad de Colombia</p>
           </div>
         </div>
         <!-- Mobile Close Button (inside header, preventing any header overlap) -->
@@ -233,20 +233,20 @@ $regiones = [
         </button>
       </header>
 
-      <!-- Selector de Edición: WLE 2026 vs WikiDía 2026 -->
+      <!-- Selector de Edición: WLE Colombia vs WikiDía 2026 -->
       <div class="edition-tabs" style="display:flex; gap:6px; margin:12px 16px 0; background:#0f172a; padding:4px; border-radius:10px; border:1px solid #334155;">
-        <button id="tab-wle" class="tab-btn active" style="flex:1; display:flex; align-items:center; justify-content:center; gap:6px; border:none; background:#10b981; color:#fff; font-size:12px; font-weight:700; padding:7px 10px; border-radius:7px; cursor:pointer; transition:all 0.15s ease;">
-          🌿 <span>WLE 2026</span>
+        <button id="tab-wle" class="tab-btn active" style="flex:1; display:flex; align-items:center; justify-content:center; gap:8px; border:none; background:#10b981; color:#fff; font-size:12px; font-weight:700; padding:8px 10px; border-radius:7px; cursor:pointer; transition:all 0.15s ease;">
+          <i class="fa-solid fa-leaf"></i> <span>WLE Colombia</span>
         </button>
-        <button id="tab-wikidia" class="tab-btn" style="flex:1; display:flex; align-items:center; justify-content:center; gap:6px; border:none; background:transparent; color:#94a3b8; font-size:12px; font-weight:700; padding:7px 10px; border-radius:7px; cursor:pointer; transition:all 0.15s ease;" title="Edición Especial WikiDía 2026 - Caminata Quinta de Bolívar">
-          🏛️ <span>WikiDía 2026</span>
+        <button id="tab-wikidia" class="tab-btn" style="flex:1; display:flex; align-items:center; justify-content:center; gap:8px; border:none; background:transparent; color:#94a3b8; font-size:12px; font-weight:700; padding:8px 10px; border-radius:7px; cursor:pointer; transition:all 0.15s ease;" title="Edición Especial WikiDía 2026 - Caminata Quinta de Bolívar">
+          <i class="fa-solid fa-camera-retro"></i> <span>WikiDía 2026</span>
         </button>
       </div>
 
       <!-- Banner Informativo WikiDía 2026 (Quinta de Bolívar) -->
       <div id="wikidia-banner" class="wikidia-banner hidden" style="margin:12px 16px 0; background:linear-gradient(135deg, rgba(81,69,245,0.18), rgba(244,122,197,0.18)); border:1px solid #6366f1; border-radius:10px; padding:12px; font-size:12px; line-height:1.5;">
         <div style="font-weight:700; color:#c7d2fe; margin-bottom:4px; display:flex; align-items:center; justify-content:space-between;">
-          <span>🏛️ Caminata Quinta de Bolívar</span>
+          <span><i class="fa-solid fa-landmark"></i> Caminata Quinta de Bolívar</span>
           <button id="btn-sync-wikidia" style="background:#4f46e5; border:none; color:#fff; font-size:11px; padding:4px 9px; border-radius:5px; cursor:pointer; font-weight:600;" title="Sincronizar con Commons"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
         </div>
         <p style="margin:0 0 8px 0; color:#e2e8f0; font-size:11.5px;" id="wikidia-banner-text">
@@ -290,7 +290,7 @@ $regiones = [
         </div>
 
         <!-- Filter by Natural Region (Filtros Facetados Dinámicos) -->
-        <div class="form-group">
+        <div class="form-group" id="group-filter-region">
           <div class="section-label">
             <span>Filtrar por Región Natural</span>
             <button id="reset-filters-btn" style="background:none; border:none; color:var(--accent); font-size:0.75rem; cursor:pointer;">Limpiar</button>
@@ -313,13 +313,13 @@ $regiones = [
         </div>
 
         <!-- Filter by Department -->
-        <div class="form-group">
+        <div class="form-group" id="group-filter-department">
           <label for="filter-department" class="section-label">
             <span>Departamento de Colombia</span>
           </label>
           <select id="filter-department" class="select-control">
             <option value="all">Todos los Departamentos (<?= htmlspecialchars($totalFotos) ?>)</option>
-            <option value="Sin GPS">📍 Sin Coordenadas GPS (<?= htmlspecialchars($fotosSinGps) ?>)</option>
+            <option value="Sin GPS">Sin Coordenadas GPS (<?= htmlspecialchars($fotosSinGps) ?>)</option>
             <?php 
             if (!empty($stats['conteo_departamentos'])) {
                 $sortedDepts = $stats['conteo_departamentos'];
@@ -352,7 +352,7 @@ $regiones = [
         </div>
 
         <!-- Layer Toggles (Exclusivos) -->
-        <div class="form-group">
+        <div class="form-group" id="group-carto-layers">
           <div class="section-label">
             <span>Capas Cartográficas</span>
           </div>
@@ -413,16 +413,6 @@ $regiones = [
     <main id="map-container" role="main">
       <div id="map"></div>
 
-      <!-- Selector Flotante de Edición visible sobre el mapa -->
-      <div class="map-edition-switcher" style="position: absolute; top: 18px; left: 60px; z-index: 1000; display: flex; gap: 6px; background: rgba(15, 23, 42, 0.92); backdrop-filter: blur(10px); padding: 4px 6px; border-radius: 30px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
-        <button id="map-tab-wle" class="edition-pill active" style="border: none; background: #10b981; color: #fff; font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 20px; cursor: pointer; transition: all 0.2s;">
-          🌿 WLE Colombia
-        </button>
-        <button id="map-tab-wikidia" class="edition-pill" style="border: none; background: transparent; color: #94a3b8; font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 20px; cursor: pointer; transition: all 0.2s;" title="Edición Especial WikiDía 2026 - Caminata Quinta de Bolívar">
-          🏛️ WikiDía 2026 (Quinta de Bolívar)
-        </button>
-      </div>
-
       <!-- Aviso centrado sobre el mapa para Desktop -->
       <div id="map-no-gps-notice" class="map-no-gps-notice hidden" role="status">
         <i class="fa-solid fa-circle-info"></i>
@@ -430,7 +420,7 @@ $regiones = [
       </div>
 
       <!-- Map Legend -->
-      <div class="map-legend">
+      <div class="map-legend" id="map-legend">
         <div class="legend-title">
           <span>Regiones Naturales</span>
         </div>

@@ -543,7 +543,7 @@ function updateFilters(sourceEvent = null) {
     if (sinGpsCount > 0) {
       const sinGpsOpt = document.createElement('option');
       sinGpsOpt.value = 'Sin GPS';
-      sinGpsOpt.textContent = `📍 Sin Coordenadas GPS (${sinGpsCount.toLocaleString()})`;
+      sinGpsOpt.textContent = `Sin Coordenadas GPS (${sinGpsCount.toLocaleString()})`;
       if (currentVal === 'Sin GPS') sinGpsOpt.selected = true;
       deptSelect.appendChild(sinGpsOpt);
     }
@@ -938,14 +938,10 @@ function setupEventListeners() {
   // Selector de Edición WLE 2026 vs WikiDía 2026
   const tabWle = document.getElementById('tab-wle');
   const tabWikidia = document.getElementById('tab-wikidia');
-  const mapTabWle = document.getElementById('map-tab-wle');
-  const mapTabWikidia = document.getElementById('map-tab-wikidia');
   const btnSync = document.getElementById('btn-sync-wikidia');
 
   if (tabWle) tabWle.addEventListener('click', () => switchEdition('wle'));
   if (tabWikidia) tabWikidia.addEventListener('click', () => switchEdition('wikidia'));
-  if (mapTabWle) mapTabWle.addEventListener('click', () => switchEdition('wle'));
-  if (mapTabWikidia) mapTabWikidia.addEventListener('click', () => switchEdition('wikidia'));
 
   if (btnSync) {
     btnSync.addEventListener('click', syncWikidiaFromCommons);
@@ -953,21 +949,40 @@ function setupEventListeners() {
 }
 
 /**
- * Switch between WLE 2026 and WikiDía 2026 editions
+ * Switch between WLE Colombia and WikiDía 2026 editions
  */
 async function switchEdition(edition) {
   const tabWle = document.getElementById('tab-wle');
   const tabWikidia = document.getElementById('tab-wikidia');
-  const mapTabWle = document.getElementById('map-tab-wle');
-  const mapTabWikidia = document.getElementById('map-tab-wikidia');
   const banner = document.getElementById('wikidia-banner');
+  const brandTitle = document.getElementById('brand-title');
+  const brandSubtitle = document.getElementById('brand-subtitle');
+  const groupRegion = document.getElementById('group-filter-region');
+  const groupDept = document.getElementById('group-filter-department');
+  const groupCarto = document.getElementById('group-carto-layers');
+  const mapLegend = document.getElementById('map-legend');
 
   if (edition === 'wikidia') {
     if (tabWle) { tabWle.style.background = 'transparent'; tabWle.style.color = '#94a3b8'; }
     if (tabWikidia) { tabWikidia.style.background = '#4f46e5'; tabWikidia.style.color = '#ffffff'; }
-    if (mapTabWle) { mapTabWle.style.background = 'transparent'; mapTabWle.style.color = '#94a3b8'; }
-    if (mapTabWikidia) { mapTabWikidia.style.background = '#4f46e5'; mapTabWikidia.style.color = '#ffffff'; }
     if (banner) banner.classList.remove('hidden');
+
+    if (brandTitle) brandTitle.innerHTML = 'WikiDía <span class="year-tag" style="background:#4f46e5;">2026</span>';
+    if (brandSubtitle) brandSubtitle.innerText = 'Caminata Casa Museo Quinta de Bolívar';
+
+    // Ocultar filtros regionales y capas cartográficas innecesarias para la caminata
+    if (groupRegion) groupRegion.classList.add('hidden');
+    if (groupDept) groupDept.classList.add('hidden');
+    if (groupCarto) groupCarto.classList.add('hidden');
+    if (mapLegend) mapLegend.classList.add('hidden');
+
+    // Remover polígonos del mapa
+    if (state.regionsLayer && state.map.hasLayer(state.regionsLayer)) {
+      state.map.removeLayer(state.regionsLayer);
+    }
+    if (state.departmentsLayer && state.map.hasLayer(state.departmentsLayer)) {
+      state.map.removeLayer(state.departmentsLayer);
+    }
 
     if (!state.wlePoints) {
       state.wlePoints = [...state.allPoints];
@@ -998,9 +1013,9 @@ async function switchEdition(edition) {
       const bannerText = document.getElementById('wikidia-banner-text');
       if (bannerText) {
         if (state.allPhotos.length === 0) {
-          bannerText.innerHTML = 'Aún no hay fotos subidas en Commons. Cuando los asistentes suban imágenes a la categoría, presiona <strong>Sincronizar</strong> para verlas aquí en el mapa.';
+          bannerText.innerHTML = 'Aún no se han registrado fotos en Commons para esta caminata. Cuando los asistentes suban imágenes, presiona <strong>Sincronizar</strong> para verlas aquí.';
         } else {
-          bannerText.innerHTML = `✔ <strong>${state.allPhotos.length} fotos</strong> sincronizadas de la Quinta de Bolívar.`;
+          bannerText.innerHTML = `<strong>${state.allPhotos.length} fotos</strong> sincronizadas de la Quinta de Bolívar.`;
         }
       }
     } catch (e) {
@@ -1009,11 +1024,23 @@ async function switchEdition(edition) {
       showLoading(false);
     }
   } else {
+    // Restaurar WLE Colombia
     if (tabWikidia) { tabWikidia.style.background = 'transparent'; tabWikidia.style.color = '#94a3b8'; }
     if (tabWle) { tabWle.style.background = '#10b981'; tabWle.style.color = '#ffffff'; }
-    if (mapTabWikidia) { mapTabWikidia.style.background = 'transparent'; mapTabWikidia.style.color = '#94a3b8'; }
-    if (mapTabWle) { mapTabWle.style.background = '#10b981'; mapTabWle.style.color = '#ffffff'; }
     if (banner) banner.classList.add('hidden');
+
+    if (brandTitle) brandTitle.innerHTML = 'Wiki Loves Earth <span class="year-tag">2026</span>';
+    if (brandSubtitle) brandSubtitle.innerText = 'Fotografías de la biodiversidad de Colombia';
+
+    // Restaurar filtros y capas cartográficas
+    if (groupRegion) groupRegion.classList.remove('hidden');
+    if (groupDept) groupDept.classList.remove('hidden');
+    if (groupCarto) groupCarto.classList.remove('hidden');
+    if (mapLegend) mapLegend.classList.remove('hidden');
+
+    if (state.showRegionsLayer && state.regionsLayer && !state.map.hasLayer(state.regionsLayer)) {
+      state.map.addLayer(state.regionsLayer);
+    }
 
     if (state.wlePoints) {
       state.allPoints = [...state.wlePoints];
