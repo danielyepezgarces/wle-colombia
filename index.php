@@ -129,20 +129,37 @@ if (isset($_GET['api'])) {
 }
 
 // Carga y preprocesamiento de datos del lado del servidor
-$statsFile = "$dataDir/wle_colombia_stats.json";
-$stats = file_exists($statsFile) ? json_decode(file_get_contents($statsFile), true) : [
-    'total_fotos' => 2387,
-    'fotos_con_gps' => 906,
-    'total_autores' => 74,
-    'conteo_regiones' => [],
-    'conteo_departamentos' => [],
-    'top_autores' => []
-];
+$requestUri = $_SERVER['REQUEST_URI'] ?? '';
+$isWikidiaInitial = (isset($_GET['edition']) && $_GET['edition'] === 'wikidia') || strpos($requestUri, '/wikidia') !== false;
 
-$totalFotos = number_format($stats['total_fotos'] ?? 2387);
-$fotosGps = number_format($stats['fotos_con_gps'] ?? 906);
-$fotosSinGps = number_format($stats['fotos_sin_gps'] ?? 1481);
-$totalAutores = number_format($stats['total_autores'] ?? 74);
+if ($isWikidiaInitial) {
+    $statsFile = "$dataDir/wikidia_stats.json";
+    $stats = file_exists($statsFile) ? json_decode(file_get_contents($statsFile), true) : [
+        'total_fotos' => 0,
+        'fotos_con_gps' => 0,
+        'fotos_sin_gps' => 0,
+        'total_autores' => 0,
+        'conteo_regiones' => [],
+        'conteo_departamentos' => [],
+        'top_autores' => []
+    ];
+} else {
+    $statsFile = "$dataDir/wle_colombia_stats.json";
+    $stats = file_exists($statsFile) ? json_decode(file_get_contents($statsFile), true) : [
+        'total_fotos' => 2387,
+        'fotos_con_gps' => 906,
+        'fotos_sin_gps' => 1481,
+        'total_autores' => 74,
+        'conteo_regiones' => [],
+        'conteo_departamentos' => [],
+        'top_autores' => []
+    ];
+}
+
+$totalFotos = number_format($stats['total_fotos'] ?? ($isWikidiaInitial ? 0 : 2387));
+$fotosGps = number_format($stats['fotos_con_gps'] ?? ($isWikidiaInitial ? 0 : 906));
+$fotosSinGps = number_format($stats['fotos_sin_gps'] ?? ($isWikidiaInitial ? 0 : 1481));
+$totalAutores = number_format($stats['total_autores'] ?? ($isWikidiaInitial ? 0 : 74));
 $totalRegiones = count($stats['conteo_regiones'] ?? []);
 
 $regiones = [
@@ -225,8 +242,8 @@ $regiones = [
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Biodiversidad_esfera.png" alt="Biodiversidad Esfera">
           </div>
           <div class="brand-titles">
-            <h1 id="brand-title">Wiki Loves Earth <span class="year-tag">2026</span></h1>
-            <p id="brand-subtitle">Fotografías de la biodiversidad de Colombia</p>
+            <h1 id="brand-title"><?= $isWikidiaInitial ? 'WikiDía <span class="year-tag" style="background:#4f46e5;">2026</span>' : 'Wiki Loves Earth <span class="year-tag">2026</span>' ?></h1>
+            <p id="brand-subtitle"><?= $isWikidiaInitial ? 'Caminata Casa Museo Quinta de Bolívar' : 'Fotografías de la biodiversidad de Colombia' ?></p>
           </div>
         </div>
         <!-- Mobile Close Button (inside header, preventing any header overlap) -->
@@ -237,16 +254,16 @@ $regiones = [
 
       <!-- Selector de Edición: WLE Colombia vs WikiDía 2026 -->
       <div class="edition-tabs">
-        <button id="tab-wle" type="button" class="tab-btn active" onclick="switchEdition('wle')" title="Catálogo Nacional Wiki Loves Earth Colombia">
+        <button id="tab-wle" type="button" class="tab-btn <?= $isWikidiaInitial ? '' : 'active' ?>" style="<?= $isWikidiaInitial ? 'background:transparent; color:#94a3b8;' : '' ?>" onclick="switchEdition('wle')" title="Catálogo Nacional Wiki Loves Earth Colombia">
           <i class="fa-solid fa-leaf"></i> <span>WLE Colombia</span>
         </button>
-        <button id="tab-wikidia" type="button" class="tab-btn" onclick="switchEdition('wikidia')" title="Edición Especial WikiDía 2026 - Caminata Quinta de Bolívar">
+        <button id="tab-wikidia" type="button" class="tab-btn <?= $isWikidiaInitial ? 'active' : '' ?>" style="<?= $isWikidiaInitial ? 'background:#4f46e5; color:#ffffff;' : '' ?>" onclick="switchEdition('wikidia')" title="Edición Especial WikiDía 2026 - Caminata Quinta de Bolívar">
           <i class="fa-solid fa-camera-retro"></i> <span>WikiDía 2026</span>
         </button>
       </div>
 
       <!-- Banner Informativo WikiDía 2026 (Quinta de Bolívar) -->
-      <div id="wikidia-banner" class="wikidia-banner hidden" style="margin:12px 16px 0; background:linear-gradient(135deg, rgba(81,69,245,0.18), rgba(244,122,197,0.18)); border:1px solid #6366f1; border-radius:10px; padding:12px; font-size:12px; line-height:1.5;">
+      <div id="wikidia-banner" class="wikidia-banner <?= $isWikidiaInitial ? '' : 'hidden' ?>" style="margin:12px 16px 0; background:linear-gradient(135deg, rgba(81,69,245,0.18), rgba(244,122,197,0.18)); border:1px solid #6366f1; border-radius:10px; padding:12px; font-size:12px; line-height:1.5;">
         <div style="font-weight:700; color:#c7d2fe; margin-bottom:4px; display:flex; align-items:center; justify-content:space-between;">
           <span><i class="fa-solid fa-landmark"></i> Caminata Quinta de Bolívar</span>
           <button id="btn-sync-wikidia" style="background:#4f46e5; border:none; color:#fff; font-size:11px; padding:4px 9px; border-radius:5px; cursor:pointer; font-weight:600;" title="Sincronizar con Commons"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
@@ -292,7 +309,7 @@ $regiones = [
         </div>
 
         <!-- Filter by Natural Region (Filtros Facetados Dinámicos) -->
-        <div class="form-group" id="group-filter-region">
+        <div class="form-group <?= $isWikidiaInitial ? 'hidden' : '' ?>" id="group-filter-region">
           <div class="section-label">
             <span>Filtrar por Región Natural</span>
             <button id="reset-filters-btn" style="background:none; border:none; color:var(--accent); font-size:0.75rem; cursor:pointer;">Limpiar</button>
@@ -315,7 +332,7 @@ $regiones = [
         </div>
 
         <!-- Filter by Department -->
-        <div class="form-group" id="group-filter-department">
+        <div class="form-group <?= $isWikidiaInitial ? 'hidden' : '' ?>" id="group-filter-department">
           <label for="filter-department" class="section-label">
             <span>Departamento de Colombia</span>
           </label>
@@ -354,7 +371,7 @@ $regiones = [
         </div>
 
         <!-- Layer Toggles (Exclusivos) -->
-        <div class="form-group" id="group-carto-layers">
+        <div class="form-group <?= $isWikidiaInitial ? 'hidden' : '' ?>" id="group-carto-layers">
           <div class="section-label">
             <span>Capas Cartográficas</span>
           </div>
@@ -422,7 +439,7 @@ $regiones = [
       </div>
 
       <!-- Map Legend -->
-      <div class="map-legend" id="map-legend">
+      <div class="map-legend <?= $isWikidiaInitial ? 'hidden' : '' ?>" id="map-legend">
         <div class="legend-title">
           <span>Regiones Naturales</span>
         </div>

@@ -41,12 +41,6 @@ const REGION_COLORS = {
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
-  initMap();
-  setupEventListeners();
-  await loadData();
-  populateFilterDropdowns();
-  updateFilters();
-
   // Detectar si se debe activar WikiDía por URL (/wikidia, ?edition=wikidia, o #wikidia)
   const urlParams = new URLSearchParams(window.location.search);
   const isWikidiaRoute = 
@@ -55,8 +49,28 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.location.hash.toLowerCase() === '#wikidia' ||
     window.location.pathname.includes('/wikidia');
 
+  initMap(isWikidiaRoute ? 'wikidia' : 'wle');
+  setupEventListeners();
+
   if (isWikidiaRoute) {
+    state.currentEdition = 'wikidia';
+    // Carga diferida en background de los datos de WLE para cuando el usuario cambie de pestaña
+    fetch('data/colombia_regiones.geojson').then(r => r.json()).then(res => { state.regionsGeoJSON = res; }).catch(() => {});
+    Promise.all([
+      fetch('data/wle_colombia_puntos.geojson').then(r => r.json()),
+      fetch('data/wle_colombia_fotos.json').then(r => r.json()),
+      fetch('data/wle_colombia_stats.json').then(r => r.json())
+    ]).then(([pts, fotos, stats]) => {
+      state.wlePoints = pts.features || [];
+      state.wlePhotos = fotos || [];
+      state.wleStats = stats;
+    }).catch(() => {});
+
     await switchEdition('wikidia');
+  } else {
+    await loadData();
+    populateFilterDropdowns();
+    updateFilters();
   }
 
   // Responder a cambios de hash en vivo (#wikidia / #wle)
@@ -70,15 +84,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 /**
- * Initialize Leaflet Map centered on Colombia
+ * Initialize Leaflet Map
  */
-function initMap() {
+function initMap(initialMode = 'wle') {
   const COLOMBIA_CENTER = [4.570868, -74.297333];
-  const DEFAULT_ZOOM = 6;
+  const QUINTA_BOLIVAR_CENTER = [4.602492, -74.065487];
+  const isWikidia = initialMode === 'wikidia';
 
   state.map = L.map('map', {
-    center: COLOMBIA_CENTER,
-    zoom: DEFAULT_ZOOM,
+    center: isWikidia ? QUINTA_BOLIVAR_CENTER : COLOMBIA_CENTER,
+    zoom: isWikidia ? 18 : 6,
     zoomControl: false,
     minZoom: 4,
     maxZoom: 20
