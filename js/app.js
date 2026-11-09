@@ -1116,7 +1116,6 @@ async function syncWikidiaFromCommons() {
     if (btn) btn.innerHTML = '<i class="fa-solid fa-rotate"></i> Sincronizar';
   }
 }
-}
 
 /**
  * Reset all filters to default

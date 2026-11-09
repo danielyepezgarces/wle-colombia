@@ -182,7 +182,8 @@ $regiones = [
   <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/c/ca/Biodiversidad_esfera.png">
   <meta name="twitter:image:alt" content="Wiki Loves Earth Colombia 2026">
 
-  <!-- Apple iOS Web App -->
+  <!-- Mobile Web App -->
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="WLE Colombia 2026">
