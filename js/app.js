@@ -23,6 +23,7 @@ const state = {
   showRegionsLayer: true,
   showDepartmentsLayer: false,
   currentLightboxIndex: -1,
+  currentEdition: 'wle',
   stats: window.PHP_STATS || null,
   galleryPage: 1,
   galleryPageSize: 24
@@ -430,21 +431,23 @@ function updateFilters(sourceEvent = null) {
 
   // 1. Filtrar la totalidad de fotografías (con y sin GPS)
   state.filteredPhotos = state.allPhotos.filter(photo => {
-    // Filtro por región o "Sin Región" (fotos sin GPS)
-    if (state.activeRegion !== 'all') {
-      if (state.activeRegion === 'Sin Región') {
-        if (photo.has_gps && photo.region !== 'Sin Región') return false;
-      } else if (photo.region !== state.activeRegion) {
-        return false;
+    if (state.currentEdition !== 'wikidia') {
+      // Filtro por región o "Sin Región" (fotos sin GPS)
+      if (state.activeRegion !== 'all') {
+        if (state.activeRegion === 'Sin Región') {
+          if (photo.has_gps && photo.region !== 'Sin Región') return false;
+        } else if (photo.region !== state.activeRegion) {
+          return false;
+        }
       }
-    }
 
-    // Filtro por departamento o "Sin GPS"
-    if (state.activeDepartment !== 'all') {
-      if (state.activeDepartment === 'Sin GPS') {
-        if (photo.has_gps && photo.departamento !== 'Sin GPS') return false;
-      } else if (photo.departamento !== state.activeDepartment) {
-        return false;
+      // Filtro por departamento o "Sin GPS"
+      if (state.activeDepartment !== 'all') {
+        if (state.activeDepartment === 'Sin GPS') {
+          if (photo.has_gps && photo.departamento !== 'Sin GPS') return false;
+        } else if (photo.departamento !== state.activeDepartment) {
+          return false;
+        }
       }
     }
 
@@ -643,6 +646,14 @@ function updateFilters(sourceEvent = null) {
  * Actualizar avisos destacados de fotos sin GPS tanto en el Sidebar como en el Mapa
  */
 function updateNotices() {
+  if (state.currentEdition === 'wikidia') {
+    const sidebarNotice = document.getElementById('sidebar-no-gps-notice');
+    if (sidebarNotice) sidebarNotice.classList.add('hidden');
+    const mapNotice = document.getElementById('map-no-gps-notice');
+    if (mapNotice) mapNotice.classList.add('hidden');
+    return;
+  }
+
   const isNoGpsFiltered = 
     state.activeRegion === 'Sin Región' || 
     state.activeDepartment === 'Sin GPS' || 
@@ -899,9 +910,12 @@ function setupEventListeners() {
   }
 
   // Recenter Map Button
-  document.getElementById('recenter-btn').addEventListener('click', () => {
-    state.map.setView([4.570868, -74.297333], 6);
-  });
+  const recenterBtn = document.getElementById('recenter-btn');
+  if (recenterBtn) {
+    recenterBtn.addEventListener('click', () => {
+      state.map.setView([4.570868, -74.297333], 6);
+    });
+  }
 
   // Mobile sidebar handlers
   const mobileToggle = document.getElementById('mobile-sidebar-toggle');
@@ -952,6 +966,8 @@ function setupEventListeners() {
  * Switch between WLE Colombia and WikiDía 2026 editions
  */
 async function switchEdition(edition) {
+  state.currentEdition = edition;
+
   const tabWle = document.getElementById('tab-wle');
   const tabWikidia = document.getElementById('tab-wikidia');
   const banner = document.getElementById('wikidia-banner');
@@ -962,9 +978,16 @@ async function switchEdition(edition) {
   const groupCarto = document.getElementById('group-carto-layers');
   const mapLegend = document.getElementById('map-legend');
 
+  // Reset text search
+  state.searchQuery = '';
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) searchInput.value = '';
+  const clearSearchBtn = document.getElementById('clear-search-btn');
+  if (clearSearchBtn) clearSearchBtn.style.display = 'none';
+
   if (edition === 'wikidia') {
-    if (tabWle) { tabWle.style.background = 'transparent'; tabWle.style.color = '#94a3b8'; }
-    if (tabWikidia) { tabWikidia.style.background = '#4f46e5'; tabWikidia.style.color = '#ffffff'; }
+    if (tabWle) { tabWle.classList.remove('active'); tabWle.style.background = 'transparent'; tabWle.style.color = '#94a3b8'; }
+    if (tabWikidia) { tabWikidia.classList.add('active'); tabWikidia.style.background = '#4f46e5'; tabWikidia.style.color = '#ffffff'; }
     if (banner) banner.classList.remove('hidden');
 
     if (brandTitle) brandTitle.innerHTML = 'WikiDía <span class="year-tag" style="background:#4f46e5;">2026</span>';
@@ -989,6 +1012,10 @@ async function switchEdition(edition) {
       state.wlePhotos = [...state.allPhotos];
       state.wleStats = { ...state.stats };
     }
+
+    state.activeRegion = 'all';
+    state.activeDepartment = 'all';
+    state.activeAuthor = 'all';
 
     showLoading(true);
     try {
@@ -1025,8 +1052,8 @@ async function switchEdition(edition) {
     }
   } else {
     // Restaurar WLE Colombia
-    if (tabWikidia) { tabWikidia.style.background = 'transparent'; tabWikidia.style.color = '#94a3b8'; }
-    if (tabWle) { tabWle.style.background = '#10b981'; tabWle.style.color = '#ffffff'; }
+    if (tabWikidia) { tabWikidia.classList.remove('active'); tabWikidia.style.background = 'transparent'; tabWikidia.style.color = '#94a3b8'; }
+    if (tabWle) { tabWle.classList.add('active'); tabWle.style.background = '#10b981'; tabWle.style.color = '#ffffff'; }
     if (banner) banner.classList.add('hidden');
 
     if (brandTitle) brandTitle.innerHTML = 'Wiki Loves Earth <span class="year-tag">2026</span>';
@@ -1042,6 +1069,10 @@ async function switchEdition(edition) {
       state.map.addLayer(state.regionsLayer);
     }
 
+    state.activeRegion = 'all';
+    state.activeDepartment = 'all';
+    state.activeAuthor = 'all';
+
     if (state.wlePoints) {
       state.allPoints = [...state.wlePoints];
       state.allPhotos = [...state.wlePhotos];
@@ -1055,6 +1086,9 @@ async function switchEdition(edition) {
     }
   }
 }
+
+window.switchEdition = switchEdition;
+window.syncWikidiaFromCommons = syncWikidiaFromCommons;
 
 /**
  * Trigger Commons Sync via API

@@ -234,11 +234,11 @@ $regiones = [
       </header>
 
       <!-- Selector de Edición: WLE Colombia vs WikiDía 2026 -->
-      <div class="edition-tabs" style="display:flex; gap:6px; margin:12px 16px 0; background:#0f172a; padding:4px; border-radius:10px; border:1px solid #334155;">
-        <button id="tab-wle" class="tab-btn active" style="flex:1; display:flex; align-items:center; justify-content:center; gap:8px; border:none; background:#10b981; color:#fff; font-size:12px; font-weight:700; padding:8px 10px; border-radius:7px; cursor:pointer; transition:all 0.15s ease;">
+      <div class="edition-tabs">
+        <button id="tab-wle" type="button" class="tab-btn active" onclick="switchEdition('wle')" title="Catálogo Nacional Wiki Loves Earth Colombia">
           <i class="fa-solid fa-leaf"></i> <span>WLE Colombia</span>
         </button>
-        <button id="tab-wikidia" class="tab-btn" style="flex:1; display:flex; align-items:center; justify-content:center; gap:8px; border:none; background:transparent; color:#94a3b8; font-size:12px; font-weight:700; padding:8px 10px; border-radius:7px; cursor:pointer; transition:all 0.15s ease;" title="Edición Especial WikiDía 2026 - Caminata Quinta de Bolívar">
+        <button id="tab-wikidia" type="button" class="tab-btn" onclick="switchEdition('wikidia')" title="Edición Especial WikiDía 2026 - Caminata Quinta de Bolívar">
           <i class="fa-solid fa-camera-retro"></i> <span>WikiDía 2026</span>
         </button>
       </div>
