@@ -81,7 +81,7 @@ function initMap() {
     zoom: DEFAULT_ZOOM,
     zoomControl: false,
     minZoom: 4,
-    maxZoom: 18
+    maxZoom: 20
   });
 
   // Zoom control on top-left
@@ -95,14 +95,18 @@ function initMap() {
       const btn = L.DomUtil.create('a', 'leaflet-control-recenter-btn', container);
       btn.id = 'recenter-btn';
       btn.href = '#';
-      btn.title = 'Centrar mapa en Colombia';
+      btn.title = 'Centrar mapa';
       btn.setAttribute('role', 'button');
-      btn.setAttribute('aria-label', 'Centrar mapa en Colombia');
+      btn.setAttribute('aria-label', 'Centrar mapa');
       btn.innerHTML = '<i class="fa-solid fa-crosshairs"></i>';
       L.DomEvent.disableClickPropagation(container);
       L.DomEvent.on(btn, 'click', (e) => {
         L.DomEvent.preventDefault(e);
-        state.map.setView(COLOMBIA_CENTER, DEFAULT_ZOOM);
+        if (state.currentEdition === 'wikidia') {
+          state.map.setView([4.602492, -74.065487], 18);
+        } else {
+          state.map.setView(COLOMBIA_CENTER, DEFAULT_ZOOM);
+        }
       });
       return container;
     }
@@ -112,30 +116,35 @@ function initMap() {
   // 100% Free / Open Source Tile Layers
   const wikimedia = L.tileLayer('https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors, &copy; <a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use" target="_blank">Wikimedia Maps</a>',
-    maxZoom: 19
+    maxZoom: 20,
+    maxNativeZoom: 19
   });
 
   const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors',
-    maxZoom: 19
+    maxZoom: 20,
+    maxNativeZoom: 19
   });
 
   const cartoVoyager = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank">CARTO</a>',
     subdomains: 'abcd',
-    maxZoom: 20
+    maxZoom: 20,
+    maxNativeZoom: 20
   });
 
   const cartoDark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank">CARTO</a>',
     subdomains: 'abcd',
-    maxZoom: 20
+    maxZoom: 20,
+    maxNativeZoom: 20
   });
 
   const openTopo = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>, SRTM | &copy; <a href="https://opentopomap.org" target="_blank">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC-BY-SA</a>)',
     subdomains: 'abc',
-    maxZoom: 17
+    maxZoom: 20,
+    maxNativeZoom: 17
   });
 
   // Basemap por defecto: Wikimedia Maps Oficial
@@ -1061,8 +1070,8 @@ async function switchEdition(edition) {
       populateFilterDropdowns();
       updateFilters();
 
-      // Enfocar Casa Museo Quinta de Bolívar
-      state.map.setView([4.602492, -74.065487], 17);
+      // Enfocar Casa Museo Quinta de Bolívar con zoom cercano detallado
+      state.map.setView([4.602492, -74.065487], 18);
 
       const bannerText = document.getElementById('wikidia-banner-text');
       if (bannerText) {
