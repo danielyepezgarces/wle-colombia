@@ -56,6 +56,45 @@ if (isset($_GET['api'])) {
             }
             exit;
 
+        case 'wikidia':
+            if (file_exists("$dataDir/wikidia_puntos.geojson")) {
+                readfile("$dataDir/wikidia_puntos.geojson");
+            } else {
+                http_response_code(404);
+                echo json_encode(['error' => 'Datos de WikiDía aún no sincronizados']);
+            }
+            exit;
+
+        case 'wikidia_stats':
+            if (file_exists("$dataDir/wikidia_stats.json")) {
+                readfile("$dataDir/wikidia_stats.json");
+            } else {
+                http_response_code(404);
+                echo json_encode(['error' => 'Estadísticas de WikiDía no encontradas']);
+            }
+            exit;
+
+        case 'sync_wikidia':
+            $syncScript = __DIR__ . '/scripts/sync_wikidia.php';
+            if (file_exists($syncScript)) {
+                ob_start();
+                include $syncScript;
+                $output = ob_get_clean();
+                $stats = file_exists("$dataDir/wikidia_stats.json") 
+                    ? json_decode(file_get_contents("$dataDir/wikidia_stats.json"), true) 
+                    : [];
+                echo json_encode([
+                    'status' => 'ok',
+                    'message' => 'Sincronización de WikiDía completada',
+                    'output' => trim($output),
+                    'stats' => $stats
+                ], JSON_UNESCAPED_UNICODE);
+            } else {
+                http_response_code(500);
+                echo json_encode(['error' => 'Script sync_wikidia.php no encontrado']);
+            }
+            exit;
+
         case 'export_csv':
             header('Content-Type: text/csv; charset=utf-8');
             header('Content-Disposition: attachment; filename="wle_colombia_2026_' . date('Y-m-d') . '.csv"');
@@ -193,6 +232,31 @@ $regiones = [
           <i class="fa-solid fa-xmark"></i>
         </button>
       </header>
+
+      <!-- Selector de Edición: WLE 2026 vs WikiDía 2026 -->
+      <div class="edition-tabs" style="display:flex; gap:6px; margin:12px 16px 0; background:#0f172a; padding:4px; border-radius:10px; border:1px solid #334155;">
+        <button id="tab-wle" class="tab-btn active" style="flex:1; display:flex; align-items:center; justify-content:center; gap:6px; border:none; background:#10b981; color:#fff; font-size:12px; font-weight:700; padding:7px 10px; border-radius:7px; cursor:pointer; transition:all 0.15s ease;">
+          🌿 <span>WLE 2026</span>
+        </button>
+        <button id="tab-wikidia" class="tab-btn" style="flex:1; display:flex; align-items:center; justify-content:center; gap:6px; border:none; background:transparent; color:#94a3b8; font-size:12px; font-weight:700; padding:7px 10px; border-radius:7px; cursor:pointer; transition:all 0.15s ease;" title="Edición Especial WikiDía 2026 - Caminata Quinta de Bolívar">
+          🏛️ <span>WikiDía 2026</span>
+        </button>
+      </div>
+
+      <!-- Banner Informativo WikiDía 2026 (Quinta de Bolívar) -->
+      <div id="wikidia-banner" class="wikidia-banner hidden" style="margin:12px 16px 0; background:linear-gradient(135deg, rgba(81,69,245,0.18), rgba(244,122,197,0.18)); border:1px solid #6366f1; border-radius:10px; padding:12px; font-size:12px; line-height:1.5;">
+        <div style="font-weight:700; color:#c7d2fe; margin-bottom:4px; display:flex; align-items:center; justify-content:space-between;">
+          <span>🏛️ Caminata Quinta de Bolívar</span>
+          <button id="btn-sync-wikidia" style="background:#4f46e5; border:none; color:#fff; font-size:11px; padding:4px 9px; border-radius:5px; cursor:pointer; font-weight:600;" title="Sincronizar con Commons"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
+        </div>
+        <p style="margin:0 0 8px 0; color:#e2e8f0; font-size:11.5px;" id="wikidia-banner-text">
+          Esperando que los participantes suban fotos a Wikimedia Commons. Al sincronizar, aparecerán geolocalizadas aquí en la Quinta de Bolívar.
+        </p>
+        <div style="display:flex; justify-content:space-between; align-items:center; font-size:11px;">
+          <a href="https://commons.wikimedia.org/wiki/Category:Caminata_fotogr%C3%A1fica_en_el_Museo_Quinta_de_Bol%C3%ADvar" target="_blank" rel="noopener" style="color:#38bdf8; text-decoration:none; font-weight:600;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Categoría</a>
+          <span id="wikidia-sync-status" style="color:#94a3b8; font-size:10.5px;">Actualizado</span>
+        </div>
+      </div>
 
       <!-- Quick Stats (Pre-renderizados en PHP) -->
       <div class="stats-summary">

@@ -1158,6 +1158,10 @@ dialog#lightbox-dialog::backdrop {
   font-size: 1rem;
 }
 
+.hidden {
+  display: none !important;
+}
+
 @keyframes fadeInDown {
   from {
     opacity: 0;

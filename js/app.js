@@ -934,6 +934,113 @@ function setupEventListeners() {
     else if (e.key === 'ArrowLeft') navigateLightbox(-1);
     else if (e.key === 'Escape') dialog.close();
   });
+
+  // Selector de Edición WLE 2026 vs WikiDía 2026
+  const tabWle = document.getElementById('tab-wle');
+  const tabWikidia = document.getElementById('tab-wikidia');
+  const btnSync = document.getElementById('btn-sync-wikidia');
+
+  if (tabWle && tabWikidia) {
+    tabWle.addEventListener('click', () => switchEdition('wle'));
+    tabWikidia.addEventListener('click', () => switchEdition('wikidia'));
+  }
+
+  if (btnSync) {
+    btnSync.addEventListener('click', syncWikidiaFromCommons);
+  }
+}
+
+/**
+ * Switch between WLE 2026 and WikiDía 2026 editions
+ */
+async function switchEdition(edition) {
+  const tabWle = document.getElementById('tab-wle');
+  const tabWikidia = document.getElementById('tab-wikidia');
+  const banner = document.getElementById('wikidia-banner');
+
+  if (edition === 'wikidia') {
+    if (tabWle) { tabWle.style.background = 'transparent'; tabWle.style.color = '#94a3b8'; }
+    if (tabWikidia) { tabWikidia.style.background = '#4f46e5'; tabWikidia.style.color = '#ffffff'; }
+    if (banner) banner.classList.remove('hidden');
+
+    if (!state.wlePoints) {
+      state.wlePoints = [...state.allPoints];
+      state.wlePhotos = [...state.allPhotos];
+      state.wleStats = { ...state.stats };
+    }
+
+    showLoading(true);
+    try {
+      const [ptsRes, fotosRes, statsRes] = await Promise.all([
+        fetch('index.php?api=wikidia').then(r => r.json()).catch(() => ({ features: [] })),
+        fetch('data/wikidia_fotos.json').then(r => r.json()).catch(() => []),
+        fetch('index.php?api=wikidia_stats').then(r => r.json()).catch(() => ({ total_fotos: 0, fotos_con_gps: 0, total_autores: 0 }))
+      ]);
+
+      state.allPoints = ptsRes.features || [];
+      state.allPhotos = fotosRes || [];
+      state.filteredPhotos = [...state.allPhotos];
+      state.stats = statsRes;
+
+      renderStatsSummary();
+      populateFilterDropdowns();
+      updateFilters();
+
+      // Enfocar Casa Museo Quinta de Bolívar
+      state.map.setView([4.602492, -74.065487], 17);
+
+      const bannerText = document.getElementById('wikidia-banner-text');
+      if (bannerText) {
+        if (state.allPhotos.length === 0) {
+          bannerText.innerHTML = 'Aún no hay fotos subidas en Commons. Cuando los asistentes suban imágenes a la categoría, presiona <strong>Sincronizar</strong> para verlas aquí en el mapa.';
+        } else {
+          bannerText.innerHTML = `✔ <strong>${state.allPhotos.length} fotos</strong> sincronizadas de la Quinta de Bolívar.`;
+        }
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      showLoading(false);
+    }
+  } else {
+    if (tabWikidia) { tabWikidia.style.background = 'transparent'; tabWikidia.style.color = '#94a3b8'; }
+    if (tabWle) { tabWle.style.background = '#10b981'; tabWle.style.color = '#ffffff'; }
+    if (banner) banner.classList.add('hidden');
+
+    if (state.wlePoints) {
+      state.allPoints = [...state.wlePoints];
+      state.allPhotos = [...state.wlePhotos];
+      state.filteredPhotos = [...state.allPhotos];
+      state.stats = { ...state.wleStats };
+
+      renderStatsSummary();
+      populateFilterDropdowns();
+      updateFilters();
+      state.map.setView([4.570868, -74.297333], 6);
+    }
+  }
+}
+
+/**
+ * Trigger Commons Sync via API
+ */
+async function syncWikidiaFromCommons() {
+  const btn = document.getElementById('btn-sync-wikidia');
+  const statusSpan = document.getElementById('wikidia-sync-status');
+  if (btn) btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sincronizando...';
+
+  try {
+    const res = await fetch('index.php?api=sync_wikidia');
+    const data = await res.json();
+    if (statusSpan) statusSpan.innerText = 'Sincronizado: ' + new Date().toLocaleTimeString();
+    await switchEdition('wikidia');
+    alert(data.message + '.\n' + (data.output || ''));
+  } catch (err) {
+    alert('Error al sincronizar con Wikimedia Commons: ' + err.message);
+  } finally {
+    if (btn) btn.innerHTML = '<i class="fa-solid fa-rotate"></i> Sincronizar';
+  }
+}
 }
 
 /**

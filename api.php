@@ -46,6 +46,47 @@ switch ($action) {
         }
         break;
 
+    case 'wikidia':
+        $file = $dataDir . '/wikidia_puntos.geojson';
+        if (file_exists($file)) {
+            readfile($file);
+        } else {
+            http_response_code(404);
+            echo json_encode(['error' => 'Datos de WikiDía aún no sincronizados']);
+        }
+        break;
+
+    case 'wikidia_stats':
+        $file = $dataDir . '/wikidia_stats.json';
+        if (file_exists($file)) {
+            readfile($file);
+        } else {
+            http_response_code(404);
+            echo json_encode(['error' => 'Estadísticas de WikiDía no encontradas']);
+        }
+        break;
+
+    case 'sync_wikidia':
+        $syncScript = __DIR__ . '/scripts/sync_wikidia.php';
+        if (file_exists($syncScript)) {
+            ob_start();
+            include $syncScript;
+            $output = ob_get_clean();
+            $stats = file_exists($dataDir . '/wikidia_stats.json') 
+                ? json_decode(file_get_contents($dataDir . '/wikidia_stats.json'), true) 
+                : [];
+            echo json_encode([
+                'status' => 'ok',
+                'message' => 'Sincronización ejecutada con éxito',
+                'output' => trim($output),
+                'stats' => $stats
+            ], JSON_UNESCAPED_UNICODE);
+        } else {
+            http_response_code(500);
+            echo json_encode(['error' => 'Script de sincronización no encontrado']);
+        }
+        break;
+
     case 'puntos':
     default:
         $file = $dataDir . '/wle_colombia_puntos.geojson';
