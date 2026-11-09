@@ -34,8 +34,8 @@ const state = {
 
 // Coordenadas de referencia
 const COLOMBIA_CENTER = [4.570868, -74.297333];
-// Quinta de Bolívar centrada en el mapa (ajuste: izquierda y hacia arriba)
-const QUINTA_BOLIVAR_CENTER = [4.602650, -74.065300];
+// Quinta de Bolívar centrada en el mapa (desplazado ~2km al oeste y ~500m al sur para centrar la Quinta en la pantalla)
+const QUINTA_BOLIVAR_CENTER = [4.598150, -74.083300];
 
 // Region color palette (High-contrast distinct chromatic palette)
 const REGION_COLORS = {
