@@ -532,6 +532,7 @@ $regiones = [
   <!-- Pre-cargado ultra ligero de estadísticas en PHP Vanilla -->
   <script>
     window.PHP_STATS = <?= json_encode($stats, JSON_UNESCAPED_UNICODE) ?>;
+    window.INITIAL_EDITION = <?= json_encode(isset($_GET['edition']) && $_GET['edition'] === 'wikidia' ? 'wikidia' : null) ?>;
   </script>
 
   <!-- App Application JS -->

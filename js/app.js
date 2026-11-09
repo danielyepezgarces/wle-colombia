@@ -46,6 +46,27 @@ document.addEventListener('DOMContentLoaded', async () => {
   await loadData();
   populateFilterDropdowns();
   updateFilters();
+
+  // Detectar si se debe activar WikiDía por URL (/wikidia, ?edition=wikidia, o #wikidia)
+  const urlParams = new URLSearchParams(window.location.search);
+  const isWikidiaRoute = 
+    window.INITIAL_EDITION === 'wikidia' || 
+    urlParams.get('edition') === 'wikidia' || 
+    window.location.hash.toLowerCase() === '#wikidia' ||
+    window.location.pathname.includes('/wikidia');
+
+  if (isWikidiaRoute) {
+    await switchEdition('wikidia');
+  }
+
+  // Responder a cambios de hash en vivo (#wikidia / #wle)
+  window.addEventListener('hashchange', () => {
+    if (window.location.hash.toLowerCase() === '#wikidia') {
+      switchEdition('wikidia');
+    } else if (window.location.hash.toLowerCase() === '#wle') {
+      switchEdition('wle');
+    }
+  });
 });
 
 /**

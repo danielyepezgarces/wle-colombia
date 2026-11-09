@@ -1,1 +1,7 @@
 DirectoryIndex index.php index.html
+
+RewriteEngine On
+RewriteBase /
+
+# Redirigir /wikidia y /wikidia/ a index.php con parámetro de edición
+RewriteRule ^wikidia/?$ index.php?edition=wikidia [QSA,L]
