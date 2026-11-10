@@ -1231,9 +1231,20 @@ async function syncWikidiaFromCommons() {
   try {
     const res = await fetch('index.php?api=sync_wikidia');
     const data = await res.json();
-    if (statusSpan) statusSpan.innerText = 'Sincronizado: ' + new Date().toLocaleTimeString();
-    await switchEdition('wikidia');
-    alert(data.message + '.\n' + (data.output || ''));
+    const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    if (statusSpan) statusSpan.innerText = 'Sincronizado: ' + timeStr;
+
+    await switchEdition('wikidia', false);
+
+    const totalFotos = (data.stats && typeof data.stats.total_fotos !== 'undefined') 
+      ? data.stats.total_fotos 
+      : state.allPhotos.length;
+
+    if (totalFotos === 0) {
+      alert('Sincronización completada.\n\nAún no hay fotos registradas en Wikimedia Commons para esta caminata.');
+    } else {
+      alert(`¡Sincronización exitosa!\n\nSe cargaron ${totalFotos.toLocaleString()} fotos de la Quinta de Bolívar.`);
+    }
   } catch (err) {
     alert('Error al sincronizar con Wikimedia Commons: ' + err.message);
   } finally {
