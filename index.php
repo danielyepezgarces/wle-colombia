@@ -176,9 +176,12 @@ $regiones = [
 $hostUrl = 'https://wle-colombia.toolforge.org';
 if ($isWikidiaInitial) {
     $pageTitle = 'WikiDía 2026 - Caminata Fotográfica Casa Museo Quinta de Bolívar | Wikimedia Colombia';
-    $pageDesc = 'Mapa interactivo y visor fotográfico georreferenciado de la caminata en la Casa Museo Quinta de Bolívar durante el WikiDía 2026.';
+    $pageDesc = 'Explora el mapa interactivo y fotografías georreferenciadas de la caminata en la Casa Museo Quinta de Bolívar durante el WikiDía 2026.';
     $pageUrl = $hostUrl . '/wikidia/';
     $pageImage = $hostUrl . '/logo_wikidia.png';
+    $pageImageWidth = '1768';
+    $pageImageHeight = '1330';
+    $pageImageType = 'image/png';
     $pageImageAlt = 'Logo WikiDía 2026 - Caminata Casa Museo Quinta de Bolívar';
     $faviconImg = 'logo_wikidia.png';
     $keywords = 'WikiDía 2026, Quinta de Bolívar, Wikimedia Colombia, Caminata fotográfica, Bogotá, Wikimedia Commons, Mapa Interactivo';
@@ -186,14 +189,17 @@ if ($isWikidiaInitial) {
     $pageTitle = 'Wiki Loves Earth Colombia 2026 - Mapa Interactivo y Biodiversidad';
     $pageDesc = 'Visualizador cartográfico y explorador de fotografías georreferenciadas de la biodiversidad de Colombia por regiones naturales y departamentos.';
     $pageUrl = $hostUrl . '/';
-    $pageImage = 'https://upload.wikimedia.org/wikipedia/commons/c/ca/Biodiversidad_esfera.png';
+    $pageImage = $hostUrl . '/biodiversidad_esfera.png';
+    $pageImageWidth = '720';
+    $pageImageHeight = '720';
+    $pageImageType = 'image/png';
     $pageImageAlt = 'Biodiversidad Esfera - Wiki Loves Earth Colombia 2026';
-    $faviconImg = 'https://upload.wikimedia.org/wikipedia/commons/c/ca/Biodiversidad_esfera.png';
+    $faviconImg = 'biodiversidad_esfera.png';
     $keywords = 'Wiki Loves Earth, WLE Colombia 2026, Wikimedia Commons, Biodiversidad Colombia, Mapa Interactivo, Fotografía de Naturaleza, IGAC, DANE';
 }
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" prefix="og: https://ogp.me/ns#">
 <head>
   <base href="/">
   <meta charset="UTF-8">
@@ -206,26 +212,29 @@ if ($isWikidiaInitial) {
   <meta name="color-scheme" content="dark">
   <link rel="canonical" id="meta-canonical" href="<?= htmlspecialchars($pageUrl) ?>">
 
-  <!-- Open Graph / Facebook / WhatsApp / Telegram / LinkedIn / Slack -->
+  <!-- Open Graph / WhatsApp / Telegram / Facebook / LinkedIn / Slack / Discord -->
+  <meta property="og:site_name" content="Wikimedia Colombia">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
   <meta property="og:url" id="og-url" content="<?= htmlspecialchars($pageUrl) ?>">
   <meta property="og:title" id="og-title" content="<?= htmlspecialchars($pageTitle) ?>">
   <meta property="og:description" id="og-desc" content="<?= htmlspecialchars($pageDesc) ?>">
   <meta property="og:image" id="og-image" content="<?= htmlspecialchars($pageImage) ?>">
   <meta property="og:image:secure_url" id="og-image-secure" content="<?= htmlspecialchars($pageImage) ?>">
+  <meta property="og:image:type" id="og-image-type" content="<?= htmlspecialchars($pageImageType) ?>">
+  <meta property="og:image:width" id="og-image-width" content="<?= htmlspecialchars($pageImageWidth) ?>">
+  <meta property="og:image:height" id="og-image-height" content="<?= htmlspecialchars($pageImageHeight) ?>">
   <meta property="og:image:alt" id="og-image-alt" content="<?= htmlspecialchars($pageImageAlt) ?>">
-  <meta property="og:site_name" content="Wikimedia Colombia">
-  <meta property="og:locale" content="es_CO">
 
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@WikimediaCo">
+  <meta name="twitter:creator" content="@danielyepezgces">
   <meta name="twitter:url" id="tw-url" content="<?= htmlspecialchars($pageUrl) ?>">
   <meta name="twitter:title" id="tw-title" content="<?= htmlspecialchars($pageTitle) ?>">
   <meta name="twitter:description" id="tw-desc" content="<?= htmlspecialchars($pageDesc) ?>">
   <meta name="twitter:image" id="tw-image" content="<?= htmlspecialchars($pageImage) ?>">
   <meta name="twitter:image:alt" id="tw-image-alt" content="<?= htmlspecialchars($pageImageAlt) ?>">
-  <meta name="twitter:creator" content="@danielyepezgces">
-  <meta name="twitter:site" content="@WikimediaCo">
 
   <!-- Mobile Web App -->
   <meta name="mobile-web-app-capable" content="yes">

@@ -1189,9 +1189,9 @@ function updateDocumentMetadata(edition) {
     ? 'Mapa interactivo y visor fotográfico georreferenciado de la caminata en la Casa Museo Quinta de Bolívar durante el WikiDía 2026.' 
     : 'Visualizador cartográfico y explorador de fotografías georreferenciadas de la biodiversidad de Colombia por regiones naturales y departamentos.';
   const url = isWikidia ? `${host}/wikidia/` : `${host}/`;
-  const img = isWikidia ? `${host}/logo_wikidia.png` : 'https://upload.wikimedia.org/wikipedia/commons/c/ca/Biodiversidad_esfera.png';
+  const img = isWikidia ? `${host}/logo_wikidia.png` : `${host}/biodiversidad_esfera.png`;
   const imgAlt = isWikidia ? 'Logo WikiDía 2026 - Caminata Casa Museo Quinta de Bolívar' : 'Biodiversidad Esfera - Wiki Loves Earth Colombia 2026';
-  const favicon = isWikidia ? 'logo_wikidia.png' : 'https://upload.wikimedia.org/wikipedia/commons/c/ca/Biodiversidad_esfera.png';
+  const favicon = isWikidia ? 'logo_wikidia.png' : 'biodiversidad_esfera.png';
 
   document.title = title;
   
