@@ -1065,6 +1065,14 @@ async function switchEdition(edition, updateUrl = true) {
     if (brandTitle) brandTitle.innerHTML = 'WikiDía <span class="year-tag" style="background:#4f46e5;">2026</span>';
     if (brandSubtitle) brandSubtitle.innerText = 'Caminata Casa Museo Quinta de Bolívar';
 
+    // Cambiar logo y favicons dinámicamente
+    const brandLogo = document.getElementById('brand-logo');
+    if (brandLogo) {
+      brandLogo.src = 'logo_wikidia.png';
+      brandLogo.alt = 'Logo WikiDía 2026';
+    }
+    updateDocumentMetadata('wikidia');
+
     // Ocultar filtros regionales y capas cartográficas innecesarias para la caminata
     if (groupRegion) groupRegion.classList.add('hidden');
     if (groupDept) groupDept.classList.add('hidden');
@@ -1131,6 +1139,14 @@ async function switchEdition(edition, updateUrl = true) {
     if (brandTitle) brandTitle.innerHTML = 'Wiki Loves Earth <span class="year-tag">2026</span>';
     if (brandSubtitle) brandSubtitle.innerText = 'Fotografías de la biodiversidad de Colombia';
 
+    // Restaurar logo de WLE Colombia
+    const brandLogo = document.getElementById('brand-logo');
+    if (brandLogo) {
+      brandLogo.src = 'https://upload.wikimedia.org/wikipedia/commons/c/ca/Biodiversidad_esfera.png';
+      brandLogo.alt = 'Biodiversidad Esfera';
+    }
+    updateDocumentMetadata('wle');
+
     // Restaurar filtros y capas cartográficas
     if (groupRegion) groupRegion.classList.remove('hidden');
     if (groupDept) groupDept.classList.remove('hidden');
@@ -1157,6 +1173,48 @@ async function switchEdition(edition, updateUrl = true) {
       state.map.setView([4.570868, -74.297333], 6);
     }
   }
+}
+
+/**
+ * Actualizar dinámicamente metadatos SEO, Open Graph y Twitter Cards en el navegador
+ */
+function updateDocumentMetadata(edition) {
+  const host = 'https://wle-colombia.toolforge.org';
+  const isWikidia = edition === 'wikidia';
+
+  const title = isWikidia 
+    ? 'WikiDía 2026 - Caminata Fotográfica Casa Museo Quinta de Bolívar | Wikimedia Colombia' 
+    : 'Wiki Loves Earth Colombia 2026 - Mapa Interactivo y Biodiversidad';
+  const desc = isWikidia 
+    ? 'Mapa interactivo y visor fotográfico georreferenciado de la caminata en la Casa Museo Quinta de Bolívar durante el WikiDía 2026.' 
+    : 'Visualizador cartográfico y explorador de fotografías georreferenciadas de la biodiversidad de Colombia por regiones naturales y departamentos.';
+  const url = isWikidia ? `${host}/wikidia/` : `${host}/`;
+  const img = isWikidia ? `${host}/logo_wikidia.png` : 'https://upload.wikimedia.org/wikipedia/commons/c/ca/Biodiversidad_esfera.png';
+  const imgAlt = isWikidia ? 'Logo WikiDía 2026 - Caminata Casa Museo Quinta de Bolívar' : 'Biodiversidad Esfera - Wiki Loves Earth Colombia 2026';
+  const favicon = isWikidia ? 'logo_wikidia.png' : 'https://upload.wikimedia.org/wikipedia/commons/c/ca/Biodiversidad_esfera.png';
+
+  document.title = title;
+  
+  const setMeta = (id, attr, val) => {
+    const el = document.getElementById(id);
+    if (el) el.setAttribute(attr, val);
+  };
+
+  setMeta('meta-desc', 'content', desc);
+  setMeta('meta-canonical', 'href', url);
+  setMeta('og-url', 'content', url);
+  setMeta('og-title', 'content', title);
+  setMeta('og-desc', 'content', desc);
+  setMeta('og-image', 'content', img);
+  setMeta('og-image-secure', 'content', img);
+  setMeta('og-image-alt', 'content', imgAlt);
+  setMeta('tw-url', 'content', url);
+  setMeta('tw-title', 'content', title);
+  setMeta('tw-desc', 'content', desc);
+  setMeta('tw-image', 'content', img);
+  setMeta('tw-image-alt', 'content', imgAlt);
+  setMeta('app-favicon', 'href', favicon);
+  setMeta('app-apple-icon', 'href', favicon);
 }
 
 window.switchEdition = switchEdition;
