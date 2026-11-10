@@ -229,7 +229,7 @@ if ($isWikidiaInitial) {
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@WikimediaCo">
-  <meta name="twitter:creator" content="@danielyepezgces">
+  <meta name="twitter:creator" content="@dyepezg">
   <meta name="twitter:url" id="tw-url" content="<?= htmlspecialchars($pageUrl) ?>">
   <meta name="twitter:title" id="tw-title" content="<?= htmlspecialchars($pageTitle) ?>">
   <meta name="twitter:description" id="tw-desc" content="<?= htmlspecialchars($pageDesc) ?>">
