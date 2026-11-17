@@ -92,7 +92,17 @@ foreach ($allPages as $page) {
 
     $tituloLimpio = preg_replace('/^File:/i', '', $page['title']);
     $autor = $info['user'] ?? 'Anónimo';
-    $fecha = $info['timestamp'] ?? date('c');
+
+    // Formato ISO estándar en hora Colombia COT (YYYY-MM-DD HH:mm:ss)
+    $fechaRaw = $info['timestamp'] ?? 'now';
+    try {
+        $dt = new DateTime($fechaRaw);
+        $dt->setTimezone(new DateTimeZone('America/Bogota'));
+        $fecha = $dt->format('Y-m-d H:i:s');
+    } catch (Exception $e) {
+        $fecha = $fechaRaw;
+    }
+
     $desc = strip_tags($meta['ImageDescription']['value'] ?? $tituloLimpio);
 
     // Miniatura optimizada de Wikimedia Commons

@@ -415,7 +415,7 @@ function createPopupContent(props) {
           </div>
           <div class="popup-meta-item">
             <i class="fa-solid fa-calendar-day"></i>
-            <span>${props.fecha || '2026'}</span>
+            <span>${formatFecha(props.fecha) || '2026'}</span>
           </div>
         </div>
         <div class="popup-actions">
@@ -1318,7 +1318,7 @@ function exportToExcel() {
     return {
       'Usuario / Autor': item.autor || '',
       'Nombre de Archivo': item.nombre || '',
-      'Fecha Subida (Hora Colombia COT)': item.fecha || '',
+      'Fecha Subida (Hora Colombia COT)': formatFecha(item.fecha) || '',
       'Descripción (Español)': item.desc || '',
       'Ubicación GPS': gpsVal,
       'Ver en Mapa': mapLink,
@@ -1419,7 +1419,7 @@ function renderLightboxContent() {
     authorElem.innerHTML = `<a href="${userCommonsUrl}" target="_blank" rel="noopener noreferrer" class="author-user-link" title="Ver perfil de ${escapeHTML(photo.autor || '')} en Wikimedia Commons"><strong>${escapeHTML(photo.autor || 'Anónimo')}</strong> <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.75rem; margin-left:4px;"></i></a>`;
   }
 
-  document.getElementById('lightbox-date').innerText = photo.fecha || 'Sin fecha';
+  document.getElementById('lightbox-date').innerText = formatFecha(photo.fecha) || 'Sin fecha';
   document.getElementById('lightbox-desc').innerText = photo.desc || 'Sin descripción disponible';
 
   // Manejo de ubicación para fotos con y sin GPS
@@ -1469,4 +1469,31 @@ function escapeHTML(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
+}
+
+function formatFecha(dateStr) {
+  if (!dateStr) return 'Sin fecha';
+  if (typeof dateStr === 'string' && (dateStr.includes('T') || dateStr.endsWith('Z'))) {
+    try {
+      const d = new Date(dateStr);
+      if (!isNaN(d.getTime())) {
+        const parts = new Intl.DateTimeFormat('es-CO', {
+          timeZone: 'America/Bogota',
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false
+        }).formatToParts(d);
+        const map = {};
+        parts.forEach(p => map[p.type] = p.value);
+        return `${map.year}-${map.month}-${map.day} ${map.hour}:${map.minute}:${map.second}`;
+      }
+    } catch (e) {
+      // Ignorar y devolver string original
+    }
+  }
+  return dateStr;
 }
