@@ -98,7 +98,10 @@ foreach ($allPages as $page) {
     // Miniatura optimizada de Wikimedia Commons
     $thumbUrl = "https://commons.wikimedia.org/wiki/Special:FilePath/" . rawurlencode($tituloLimpio) . "?width=640";
 
+    $photoId = isset($page['pageid']) ? (int)$page['pageid'] : (count($fotos) + 1);
+
     $prop = [
+        'id'           => $photoId,
         'nombre'       => $tituloLimpio,
         'autor'        => $autor,
         'fecha'        => $fecha,
@@ -121,6 +124,7 @@ foreach ($allPages as $page) {
 
     $features[] = [
         'type' => 'Feature',
+        'id' => $photoId,
         'geometry' => [
             'type' => 'Point',
             'coordinates' => [$lon, $lat]

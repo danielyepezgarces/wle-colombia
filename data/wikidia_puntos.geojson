@@ -4,8 +4,879 @@
         "evento": "WikiDía Colombia 2026",
         "actividad": "Caminata fotográfica en el Museo Quinta de Bolívar",
         "categoria_commons": "Category:Caminata fotográfica en el Museo Quinta de Bolívar",
-        "ultima_sync": "2026-11-09T16:38:29+00:00",
-        "total": 0
+        "ultima_sync": "2026-11-17T22:17:04+00:00",
+        "total": 30
     },
-    "features": []
+    "features": [
+        {
+            "type": "Feature",
+            "id": 203336453,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.062928,
+                    4.602711
+                ]
+            },
+            "properties": {
+                "id": 203336453,
+                "nombre": "Aprendiendo sobre las flores.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:07:10Z",
+                "desc": "Participantes de Wikidia reciben instrucciones de experto en botánica",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602711,
+                "lng": -74.062928,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Aprendiendo_sobre_las_flores.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/9\/93\/Aprendiendo_sobre_las_flores.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Aprendiendo%20sobre%20las%20flores.jpg?width=640",
+                "gps_raw": "4.602711, -74.062928",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602711,-74.062928",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336431,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.063378,
+                    4.602592
+                ]
+            },
+            "properties": {
+                "id": 203336431,
+                "nombre": "Charla de participantes.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:06:48Z",
+                "desc": "Participantes dialogan mientras esperan en la entrada de Quinta de Bolivar",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602592,
+                "lng": -74.063378,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Charla_de_participantes.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/c\/c7\/Charla_de_participantes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Charla%20de%20participantes.jpg?width=640",
+                "gps_raw": "4.602592, -74.063378",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602592,-74.063378",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336441,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.063072,
+                    4.602567
+                ]
+            },
+            "properties": {
+                "id": 203336441,
+                "nombre": "Charla introductoria a la caminata fotográfica en la Quinta de Bolivar.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:06:58Z",
+                "desc": "Preparación para la caminata",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602567,
+                "lng": -74.063072,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Charla_introductoria_a_la_caminata_fotogr%C3%A1fica_en_la_Quinta_de_Bolivar.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/a\/a4\/Charla_introductoria_a_la_caminata_fotogr%C3%A1fica_en_la_Quinta_de_Bolivar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Charla%20introductoria%20a%20la%20caminata%20fotogr%C3%A1fica%20en%20la%20Quinta%20de%20Bolivar.jpg?width=640",
+                "gps_raw": "4.602567, -74.063072",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602567,-74.063072",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336444,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.063028,
+                    4.602469
+                ]
+            },
+            "properties": {
+                "id": 203336444,
+                "nombre": "Charla introductoria para la caminata.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:07:00Z",
+                "desc": "Caminata en la Quinta de Bolivar",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602469,
+                "lng": -74.063028,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Charla_introductoria_para_la_caminata.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/b\/b9\/Charla_introductoria_para_la_caminata.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Charla%20introductoria%20para%20la%20caminata.jpg?width=640",
+                "gps_raw": "4.602469, -74.063028",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602469,-74.063028",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336437,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.063019,
+                    4.602467
+                ]
+            },
+            "properties": {
+                "id": 203336437,
+                "nombre": "Charla introductoria.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:06:57Z",
+                "desc": "Guía para la caminata fotográfica en la Quinta de Bolivar",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602467,
+                "lng": -74.063019,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Charla_introductoria.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/9\/94\/Charla_introductoria.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Charla%20introductoria.jpg?width=640",
+                "gps_raw": "4.602467, -74.063019",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602467,-74.063019",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336443,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.063636,
+                    4.602586
+                ]
+            },
+            "properties": {
+                "id": 203336443,
+                "nombre": "Charla previa a la caminata fotográfica en la Quinta de Bolivar.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:07:00Z",
+                "desc": "Instrucciones para iniciar la caminata",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602586,
+                "lng": -74.063636,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Charla_previa_a_la_caminata_fotogr%C3%A1fica_en_la_Quinta_de_Bolivar.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/6\/62\/Charla_previa_a_la_caminata_fotogr%C3%A1fica_en_la_Quinta_de_Bolivar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Charla%20previa%20a%20la%20caminata%20fotogr%C3%A1fica%20en%20la%20Quinta%20de%20Bolivar.jpg?width=640",
+                "gps_raw": "4.602586, -74.063636",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602586,-74.063636",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336446,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.063111,
+                    4.602483
+                ]
+            },
+            "properties": {
+                "id": 203336446,
+                "nombre": "Charla sobre La Quinta de Bolivar.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:07:03Z",
+                "desc": "Caminata fotográfica en el Museo Quinta de Bolivar",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602483,
+                "lng": -74.063111,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Charla_sobre_La_Quinta_de_Bolivar.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/7\/79\/Charla_sobre_La_Quinta_de_Bolivar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Charla%20sobre%20La%20Quinta%20de%20Bolivar.jpg?width=640",
+                "gps_raw": "4.602483, -74.063111",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602483,-74.063111",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336461,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.063028,
+                    4.602744
+                ]
+            },
+            "properties": {
+                "id": 203336461,
+                "nombre": "Charla sobre las plantas.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:07:17Z",
+                "desc": "Charla sobre la plantas",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602744,
+                "lng": -74.063028,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Charla_sobre_las_plantas.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/b\/b0\/Charla_sobre_las_plantas.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Charla%20sobre%20las%20plantas.jpg?width=640",
+                "gps_raw": "4.602744, -74.063028",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602744,-74.063028",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336432,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.063361,
+                    4.602581
+                ]
+            },
+            "properties": {
+                "id": 203336432,
+                "nombre": "Conversación Wikidia 2026.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:06:49Z",
+                "desc": "Participantes conversan en la entrada de la Quinta de Bolivar",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602581,
+                "lng": -74.063361,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Conversaci%C3%B3n_Wikidia_2026.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/a\/a2\/Conversaci%C3%B3n_Wikidia_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Conversaci%C3%B3n%20Wikidia%202026.jpg?width=640",
+                "gps_raw": "4.602581, -74.063361",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602581,-74.063361",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336423,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.063469,
+                    4.602569
+                ]
+            },
+            "properties": {
+                "id": 203336423,
+                "nombre": "Entrada a la Quinta de Bolivar.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:06:40Z",
+                "desc": "Entrada a la Quinta de Bolivar",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602569,
+                "lng": -74.063469,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Entrada_a_la_Quinta_de_Bolivar.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/f\/f9\/Entrada_a_la_Quinta_de_Bolivar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Entrada%20a%20la%20Quinta%20de%20Bolivar.jpg?width=640",
+                "gps_raw": "4.602569, -74.063469",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602569,-74.063469",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336433,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.063522,
+                    4.602642
+                ]
+            },
+            "properties": {
+                "id": 203336433,
+                "nombre": "Entrada de la Quinta de Bolivar.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:06:51Z",
+                "desc": "Participantes de Wikidia ingresan a la Quinta de Bolivar",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602642,
+                "lng": -74.063522,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Entrada_de_la_Quinta_de_Bolivar.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/b\/b0\/Entrada_de_la_Quinta_de_Bolivar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Entrada%20de%20la%20Quinta%20de%20Bolivar.jpg?width=640",
+                "gps_raw": "4.602642, -74.063522",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602642,-74.063522",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336452,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.062942,
+                    4.602736
+                ]
+            },
+            "properties": {
+                "id": 203336452,
+                "nombre": "Experta botánica.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:07:09Z",
+                "desc": "Charla sobre las flores",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602736,
+                "lng": -74.062942,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Experta_bot%C3%A1nica.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/f\/fc\/Experta_bot%C3%A1nica.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Experta%20bot%C3%A1nica.jpg?width=640",
+                "gps_raw": "4.602736, -74.062942",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602736,-74.062942",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336465,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.063019,
+                    4.602722
+                ]
+            },
+            "properties": {
+                "id": 203336465,
+                "nombre": "Experto botánico.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:07:21Z",
+                "desc": "Charla sobre las plantas",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602722,
+                "lng": -74.063019,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Experto_bot%C3%A1nico.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/9\/92\/Experto_bot%C3%A1nico.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Experto%20bot%C3%A1nico.jpg?width=640",
+                "gps_raw": "4.602722, -74.063019",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602722,-74.063019",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336467,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.063064,
+                    4.602708
+                ]
+            },
+            "properties": {
+                "id": 203336467,
+                "nombre": "Experto guía a jóvenes de Wikidia 2026.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:07:24Z",
+                "desc": "Foto durante la caminata fotográfica",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602708,
+                "lng": -74.063064,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Experto_gu%C3%ADa_a_j%C3%B3venes_de_Wikidia_2026.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/4\/4e\/Experto_gu%C3%ADa_a_j%C3%B3venes_de_Wikidia_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Experto%20gu%C3%ADa%20a%20j%C3%B3venes%20de%20Wikidia%202026.jpg?width=640",
+                "gps_raw": "4.602708, -74.063064",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602708,-74.063064",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336464,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.063011,
+                    4.602719
+                ]
+            },
+            "properties": {
+                "id": 203336464,
+                "nombre": "Expertos botánico dialoga con los participantes de Wikidia 2026.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:07:21Z",
+                "desc": "Experto guía a los participantes",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602719,
+                "lng": -74.063011,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Expertos_bot%C3%A1nico_dialoga_con_los_participantes_de_Wikidia_2026.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/1\/13\/Expertos_bot%C3%A1nico_dialoga_con_los_participantes_de_Wikidia_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Expertos%20bot%C3%A1nico%20dialoga%20con%20los%20participantes%20de%20Wikidia%202026.jpg?width=640",
+                "gps_raw": "4.602719, -74.063011",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602719,-74.063011",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336463,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.062906,
+                    4.60275
+                ]
+            },
+            "properties": {
+                "id": 203336463,
+                "nombre": "Flor tomada en la caminata fotográfica Wikidia 2026.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:07:21Z",
+                "desc": "Foto tomada en la caminata fotográfica de wikipedia 2026",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.60275,
+                "lng": -74.062906,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Flor_tomada_en_la_caminata_fotogr%C3%A1fica_Wikidia_2026.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/b\/be\/Flor_tomada_en_la_caminata_fotogr%C3%A1fica_Wikidia_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Flor%20tomada%20en%20la%20caminata%20fotogr%C3%A1fica%20Wikidia%202026.jpg?width=640",
+                "gps_raw": "4.60275, -74.062906",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.60275,-74.062906",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336455,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.062911,
+                    4.602736
+                ]
+            },
+            "properties": {
+                "id": 203336455,
+                "nombre": "Flores Wikidia 2026.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:07:12Z",
+                "desc": "Flores tomadas en la caminata fotográfica en el Museo Quinta de Bolivar",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602736,
+                "lng": -74.062911,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Flores_Wikidia_2026.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/4\/4a\/Flores_Wikidia_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Flores%20Wikidia%202026.jpg?width=640",
+                "gps_raw": "4.602736, -74.062911",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602736,-74.062911",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336449,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.063003,
+                    4.602589
+                ]
+            },
+            "properties": {
+                "id": 203336449,
+                "nombre": "Foto grupal Wikidia 2026.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:07:06Z",
+                "desc": "Foto grupal de los participantes de Wikidia 2026",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602589,
+                "lng": -74.063003,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Foto_grupal_Wikidia_2026.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/e\/e9\/Foto_grupal_Wikidia_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Foto%20grupal%20Wikidia%202026.jpg?width=640",
+                "gps_raw": "4.602589, -74.063003",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602589,-74.063003",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336445,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.063019,
+                    4.602475
+                ]
+            },
+            "properties": {
+                "id": 203336445,
+                "nombre": "Guía para la caminata fotográfica en el museo Quinta de Bolivar.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:07:01Z",
+                "desc": "Foto del guía para la caminata fotográfica en el Museo Quinta de Bolivar",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602475,
+                "lng": -74.063019,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Gu%C3%ADa_para_la_caminata_fotogr%C3%A1fica_en_el_museo_Quinta_de_Bolivar.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/0\/0a\/Gu%C3%ADa_para_la_caminata_fotogr%C3%A1fica_en_el_museo_Quinta_de_Bolivar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Gu%C3%ADa%20para%20la%20caminata%20fotogr%C3%A1fica%20en%20el%20museo%20Quinta%20de%20Bolivar.jpg?width=640",
+                "gps_raw": "4.602475, -74.063019",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602475,-74.063019",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336456,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.062911,
+                    4.602719
+                ]
+            },
+            "properties": {
+                "id": 203336456,
+                "nombre": "Jóvenes aprenden sobre las flores.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:07:13Z",
+                "desc": "Jóvenes participantes de Wikidia 2026 reciben charla sobre las plantas y flores",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602719,
+                "lng": -74.062911,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:J%C3%B3venes_aprenden_sobre_las_flores.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/6\/62\/J%C3%B3venes_aprenden_sobre_las_flores.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/J%C3%B3venes%20aprenden%20sobre%20las%20flores.jpg?width=640",
+                "gps_raw": "4.602719, -74.062911",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602719,-74.062911",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336434,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.063325,
+                    4.602594
+                ]
+            },
+            "properties": {
+                "id": 203336434,
+                "nombre": "Participante del Wikidia 2026.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:06:52Z",
+                "desc": "Joven participante del Wikidia 2026",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602594,
+                "lng": -74.063325,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Participante_del_Wikidia_2026.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/d\/db\/Participante_del_Wikidia_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Participante%20del%20Wikidia%202026.jpg?width=640",
+                "gps_raw": "4.602594, -74.063325",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602594,-74.063325",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336448,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.062928,
+                    4.602531
+                ]
+            },
+            "properties": {
+                "id": 203336448,
+                "nombre": "Participantes de la caminata en el museo Quinta de Bolivar.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:07:04Z",
+                "desc": "Los participantes de la caminata son guiados por experto botánico",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602531,
+                "lng": -74.062928,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Participantes_de_la_caminata_en_el_museo_Quinta_de_Bolivar.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/5\/5d\/Participantes_de_la_caminata_en_el_museo_Quinta_de_Bolivar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Participantes%20de%20la%20caminata%20en%20el%20museo%20Quinta%20de%20Bolivar.jpg?width=640",
+                "gps_raw": "4.602531, -74.062928",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602531,-74.062928",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336447,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.062958,
+                    4.602586
+                ]
+            },
+            "properties": {
+                "id": 203336447,
+                "nombre": "Participantes de la caminata fotográfica en el Museo Quinta de Bolivar.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:07:03Z",
+                "desc": "Foto en la Quinta de Bolivar",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602586,
+                "lng": -74.062958,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Participantes_de_la_caminata_fotogr%C3%A1fica_en_el_Museo_Quinta_de_Bolivar.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/a\/a7\/Participantes_de_la_caminata_fotogr%C3%A1fica_en_el_Museo_Quinta_de_Bolivar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Participantes%20de%20la%20caminata%20fotogr%C3%A1fica%20en%20el%20Museo%20Quinta%20de%20Bolivar.jpg?width=640",
+                "gps_raw": "4.602586, -74.062958",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602586,-74.062958",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336429,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.063317,
+                    4.602606
+                ]
+            },
+            "properties": {
+                "id": 203336429,
+                "nombre": "Participantes de Wikidia.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:06:45Z",
+                "desc": "Participantes esperan en la entrada de la Quinta de Bolivar Bogotá",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602606,
+                "lng": -74.063317,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Participantes_de_Wikidia.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/6\/67\/Participantes_de_Wikidia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Participantes%20de%20Wikidia.jpg?width=640",
+                "gps_raw": "4.602606, -74.063317",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602606,-74.063317",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336422,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.063483,
+                    4.602575
+                ]
+            },
+            "properties": {
+                "id": 203336422,
+                "nombre": "Participantes inician recorrido de la caminata.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:06:39Z",
+                "desc": "Wikidia 2026",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602575,
+                "lng": -74.063483,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Participantes_inician_recorrido_de_la_caminata.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/7\/70\/Participantes_inician_recorrido_de_la_caminata.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Participantes%20inician%20recorrido%20de%20la%20caminata.jpg?width=640",
+                "gps_raw": "4.602575, -74.063483",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602575,-74.063483",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336425,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.063331,
+                    4.602578
+                ]
+            },
+            "properties": {
+                "id": 203336425,
+                "nombre": "Puerta de la Quinta de Bolivar.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:06:42Z",
+                "desc": "Participantes de Wikidia 2026",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602578,
+                "lng": -74.063331,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Puerta_de_la_Quinta_de_Bolivar.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/f\/f0\/Puerta_de_la_Quinta_de_Bolivar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Puerta%20de%20la%20Quinta%20de%20Bolivar.jpg?width=640",
+                "gps_raw": "4.602578, -74.063331",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602578,-74.063331",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336436,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.063028,
+                    4.602556
+                ]
+            },
+            "properties": {
+                "id": 203336436,
+                "nombre": "Reunión previa a la caminata fotográfica en la Quinta de Bolivar.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:06:54Z",
+                "desc": "Wikidia 2026",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602556,
+                "lng": -74.063028,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Reuni%C3%B3n_previa_a_la_caminata_fotogr%C3%A1fica_en_la_Quinta_de_Bolivar.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/6\/6e\/Reuni%C3%B3n_previa_a_la_caminata_fotogr%C3%A1fica_en_la_Quinta_de_Bolivar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Reuni%C3%B3n%20previa%20a%20la%20caminata%20fotogr%C3%A1fica%20en%20la%20Quinta%20de%20Bolivar.jpg?width=640",
+                "gps_raw": "4.602556, -74.063028",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602556,-74.063028",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336454,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.06305,
+                    4.60255
+                ]
+            },
+            "properties": {
+                "id": 203336454,
+                "nombre": "Wikidia 2026 foto colectiva.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:07:10Z",
+                "desc": "Foto grupal Wikidia 2026, Bogotá Colombia",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.60255,
+                "lng": -74.06305,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Wikidia_2026_foto_colectiva.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/2\/2f\/Wikidia_2026_foto_colectiva.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Wikidia%202026%20foto%20colectiva.jpg?width=640",
+                "gps_raw": "4.60255, -74.06305",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.60255,-74.06305",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336428,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.063325,
+                    4.602572
+                ]
+            },
+            "properties": {
+                "id": 203336428,
+                "nombre": "Wikidia 2026.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:06:43Z",
+                "desc": "Participantes Wikidia 2026",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602572,
+                "lng": -74.063325,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Wikidia_2026.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/4\/49\/Wikidia_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Wikidia%202026.jpg?width=640",
+                "gps_raw": "4.602572, -74.063325",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602572,-74.063325",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203336430,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -74.0633,
+                    4.602569
+                ]
+            },
+            "properties": {
+                "id": 203336430,
+                "nombre": "Wikidia, Bogotá Colombia.jpg",
+                "autor": "NEKOCHON",
+                "fecha": "2026-11-16T18:06:45Z",
+                "desc": "Participantes de Wikidia 2026 esperan en la entrada de la Quinta de Bolivar",
+                "region": "Andina",
+                "departamento": "Bogotá D.C.",
+                "lat": 4.602569,
+                "lng": -74.0633,
+                "has_gps": true,
+                "commons_url": "https:\/\/commons.wikimedia.org\/wiki\/File:Wikidia,_Bogot%C3%A1_Colombia.jpg",
+                "img_url": "https:\/\/upload.wikimedia.org\/wikipedia\/commons\/2\/21\/Wikidia%2C_Bogot%C3%A1_Colombia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                "thumb_url": "https:\/\/commons.wikimedia.org\/wiki\/Special:FilePath\/Wikidia%2C%20Bogot%C3%A1%20Colombia.jpg?width=640",
+                "gps_raw": "4.602569, -74.0633",
+                "map_url": "https:\/\/www.google.com\/maps?q=4.602569,-74.0633",
+                "evento": "WikiDía 2026 - Caminata Quinta de Bolívar"
+            }
+        }
+    ]
 }

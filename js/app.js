@@ -385,10 +385,12 @@ function createPopupContent(props) {
   const safeRegion = escapeHTML(props.region || 'Natural');
   const regColor = REGION_COLORS[props.region] || '#10b981';
   const thumbUrl = props.thumb_url || props.img_url;
+  const rawId = props.id !== undefined && props.id !== null ? props.id : (props.nombre || '');
+  const safeIdParam = escapeHTML(JSON.stringify(rawId));
 
   return `
     <div class="popup-card">
-      <div class="popup-img-wrapper" onclick="openLightboxById(${props.id})">
+      <div class="popup-img-wrapper" onclick='openLightboxById(${safeIdParam})'>
         <img 
           src="${thumbUrl}" 
           alt="${safeTitle}" 
@@ -417,7 +419,7 @@ function createPopupContent(props) {
           </div>
         </div>
         <div class="popup-actions">
-          <button class="btn-popup btn-popup-primary" onclick="openLightboxById(${props.id})">
+          <button class="btn-popup btn-popup-primary" onclick='openLightboxById(${safeIdParam})'>
             <i class="fa-solid fa-eye"></i> Ver Foto
           </button>
           <a class="btn-popup btn-popup-outline" href="${props.commons_url}" target="_blank" rel="noopener noreferrer">
@@ -791,19 +793,22 @@ function renderGalleryPreview() {
     return;
   }
 
-  photosToShow.forEach(photo => {
+  photosToShow.forEach((photo, idx) => {
     const card = document.createElement('div');
     card.className = 'gallery-card';
     card.title = `${photo.nombre} - ${photo.autor}` + (photo.has_gps ? '' : ' (Sin ubicación GPS)');
 
     card.onclick = () => {
+      const targetIdx = state.filteredPhotos.indexOf(photo);
+      const safeIdx = targetIdx !== -1 ? targetIdx : idx;
+
       if (photo.has_gps && photo.lat != null && photo.lng != null) {
-        state.map.flyTo([photo.lat, photo.lng], 14, { duration: 1 });
+        state.map.flyTo([photo.lat, photo.lng], 16, { duration: 0.8 });
         setTimeout(() => {
-          openLightboxById(photo.id);
+          openLightboxByIndex(safeIdx);
         }, 450);
       } else {
-        openLightboxById(photo.id);
+        openLightboxByIndex(safeIdx);
       }
     };
 
@@ -1105,8 +1110,16 @@ async function switchEdition(edition, updateUrl = true) {
         fetch('index.php?api=wikidia_stats').then(r => r.json()).catch(() => ({ total_fotos: 0, fotos_con_gps: 0, total_autores: 0 }))
       ]);
 
-      state.allPoints = ptsRes.features || [];
-      state.allPhotos = fotosRes || [];
+      state.allPoints = (ptsRes.features || []).map((feat, idx) => {
+        if (feat.properties && (feat.properties.id === undefined || feat.properties.id === null)) {
+          feat.properties.id = feat.id || (idx + 1);
+        }
+        return feat;
+      });
+      state.allPhotos = (fotosRes || []).map((photo, idx) => ({
+        ...photo,
+        id: (photo.id !== undefined && photo.id !== null) ? photo.id : (idx + 1)
+      }));
       state.filteredPhotos = [...state.allPhotos];
       state.stats = statsRes;
 
@@ -1354,16 +1367,38 @@ function exportToExcel() {
 }
 
 /**
- * Open Native Lightbox Modal by Photo ID
+ * Open Native Lightbox Modal by Photo ID or Name
  * Funciona para cualquier foto (con o sin coordenadas GPS)
  */
 window.openLightboxById = function(id) {
-  const index = state.filteredPhotos.findIndex(p => p.id === id);
+  if (id === undefined || id === null || id === '') return;
+
+  const index = state.filteredPhotos.findIndex(p => {
+    if (p.id !== undefined && p.id !== null && (p.id === id || String(p.id) === String(id))) {
+      return true;
+    }
+    if (p.nombre && (p.nombre === id || String(p.nombre) === String(id))) {
+      return true;
+    }
+    return false;
+  });
+
   if (index !== -1) {
+    openLightboxByIndex(index);
+  }
+};
+
+/**
+ * Open Native Lightbox Modal directly by index in state.filteredPhotos
+ */
+window.openLightboxByIndex = function(index) {
+  if (index >= 0 && index < state.filteredPhotos.length) {
     state.currentLightboxIndex = index;
     renderLightboxContent();
     const dialog = document.getElementById('lightbox-dialog');
-    dialog.showModal();
+    if (dialog && !dialog.open) {
+      dialog.showModal();
+    }
   }
 };
 
